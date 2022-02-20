@@ -71,9 +71,9 @@ function _interopRequireDefault(obj) {
 // port by Daniele Zannotti http://www.github.com/dzannotti <dzannotti@me.com>
 
 var contextMenuList = [
-  { name: 'Copy Key' },
-  { name: 'Copy Value' },
-  { name: 'Collapse Parent' }
+  { name: '复制Key' },
+  { name: '复制Value' },
+  { name: '折叠父对象' }
 ];
 var identity = function identity(value) {
   return value;

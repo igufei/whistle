@@ -60,14 +60,14 @@ var QRCodeDialog = React.createClass({
             className="btn btn-primary"
             onClick={this.download}
           >
-            Download
+            下载
           </button>
           <button
             type="button"
             className="btn btn-default"
             data-dismiss="modal"
           >
-            Close
+            关闭
           </button>
         </div>
       </Dialog>

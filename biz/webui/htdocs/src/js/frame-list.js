@@ -343,7 +343,7 @@ var FrameList = React.createClass({
                 if (item.opcode) {
                   item.title += '\nOpcode: ' + item.opcode;
                   item.title +=
-                    '\nType: ' + (item.opcode == 1 ? 'Text' : 'Binary');
+                    '\nType: ' + (item.opcode == 1 ? '文本' : '二定制');
                 }
                 if (item.compressed) {
                   item.title += '\nCompressed: ' + item.compressed;

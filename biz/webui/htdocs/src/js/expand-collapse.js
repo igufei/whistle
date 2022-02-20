@@ -40,16 +40,16 @@ var ExpandCollapse = React.createClass({
         {isCollapse ? text : text.substring(0, expandLength) + '...'}
         {viewAll ? (
           <button onClick={this.viewAll} className="w-expand-collapse">
-            ViewAll
+            查看全部
           </button>
         ) : isCollapse ? undefined : (
           <button onClick={this.onExpand} className="w-expand-collapse">
-            Expand
+            扩展
           </button>
         )}
         {expandLength > MIN_LENGTH ? (
           <button onClick={this.onCollapse} className="w-expand-collapse">
-            Collapse
+            收缩
           </button>
         ) : undefined}
       </span>

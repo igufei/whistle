@@ -39,9 +39,9 @@ program.setConfig({
   main: function(options) {
     var cmd = process.argv[2];
     if ((cmd === 'start' || cmd === 'restart') && (options.inspect || options.inspectBrk)) {
-      error('[!] Only support running command `w2 run` to activate inspector on whistle.');
+      error('[!] 仅支持运行命令[w2 run]来激活whistle的检查器。');
       var argv = Array.prototype.slice.call(process.argv, 3);
-      info('[i] Try to run command `w2 run' + (argv.length ? ' ' + argv.join(' ') : '') + '` instead of.');
+      info('[i] 尝试运行命令`w2 run' + (argv.length ? ' ' + argv.join(' ') : '') + '` instead of.');
       return process.exit(1);
     }
     var hash = options && options.storage && encodeURIComponent(options.storage);
@@ -78,52 +78,52 @@ program.setConfig({
 
 program
   .command('status')
-  .description('Show the running status');
+  .description('显示运行状态');
 program
   .command('add [filepath]')
-  .description('Add rules from local js file (.whistle.js by default)');
+  .description('从本地js文件(.whistle.js默认值)添加规则');
 program.command('install')
-  .description('Install a whistle plugin');
+  .description('安装一个whistle插件');
 program.command('uninstall')
-  .description('Uninstall a whistle plugin');
+  .description('卸载whistle插件');
 program.command('exec')
-  .description('Exec whistle plugin command');
+  .description('执行-whist插件命令');
   
 program
-  .option('-D, --baseDir [baseDir]', 'set the configured storage root path', String, undefined)
-  .option('-z, --certDir [directory]', 'set custom certificate store directory', String, undefined)
-  .option('-l, --localUIHost [hostname]', 'set the domain for the web ui (' + config.localUIHost + ' by default)', String, undefined)
-  .option('-L, --pluginHost [hostname]', 'set the domain for the web ui of plugin  (as: "script=a.b.com&vase=x.y.com")', String, undefined)
-  .option('-n, --username [username]', 'set the username to access the web ui', String, undefined)
-  .option('-w, --password [password]', 'set the password to access the web ui', String, undefined)
-  .option('-N, --guestName [username]', 'set the the guest name to access the web ui (can only view the data)', String, undefined)
-  .option('-W, --guestPassword [password]', 'set the guest password to access the web ui (can only view the data)', String, undefined)
-  .option('-s, --sockets [number]', 'set the max number of cached connections on each domain (' + config.sockets + ' by default)', parseInt, undefined)
-  .option('-S, --storage [newStorageDir]', 'set the configured storage directory', String, undefined)
-  .option('-C, --copy [storageDir]', 'copy the configuration of the specified directory to a new directory', String, undefined)
-  .option('-c, --dnsCache [time]', 'set the cache time of DNS (60000ms by default)', String, undefined)
-  .option('-H, --host [boundHost]', 'set the bound host (INADDR_ANY by default)', String, undefined)
-  .option('-p, --port [proxyPort]', 'set the proxy port (' + config.port + ' by default)', String, undefined)
-  .option('-P, --uiport [uiport]', 'set the webui port', String, undefined)
-  .option('-m, --middlewares [script path or module name]', 'set the express middlewares loaded at startup (as: xx,yy/zz.js)', String, undefined)
-  .option('-M, --mode [mode]', 'set the starting mode (as: pureProxy|debug|multiEnv|capture|disableH2|network|rules|plugins|prod)', String, undefined)
-  .option('-t, --timeout [ms]', 'set the request timeout (' + config.timeout + 'ms by default)', parseInt, undefined)
-  .option('-e, --extra [extraData]', 'set the extra parameters for plugin', String, undefined)
-  .option('-f, --secureFilter [secureFilter]', 'set the path of secure filter', String, undefined)
-  .option('-r, --shadowRules [shadowRules]', 'set the shadow (default) rules', String, undefined)
-  .option('-R, --reqCacheSize [reqCacheSize]', 'set the cache size of request data (600 by default)', String, undefined)
-  .option('-F, --frameCacheSize [frameCacheSize]', 'set the cache size of webSocket and socket\'s frames (512 by default)', String, undefined)
-  .option('-A, --addon [pluginPaths]', 'add custom plugin paths', String, undefined)
-  .option('--config [workers]', 'start the cluster server and set worker number (os.cpus().length by default)', String, undefined)
-  .option('--cluster [config]', 'load the startup config from a local file', String, undefined)
-  .option('--dnsServer [dnsServer]', 'set custom dns servers', String, undefined)
-  .option('--socksPort [socksPort]', 'set the socksv5 server port', String, undefined)
-  .option('--httpPort [httpPort]', 'set the http server port', String, undefined)
-  .option('--httpsPort [httpsPort]', 'set the https server port', String, undefined)
-  .option('--no-global-plugins', 'do not load any globally installed plugins')
-  .option('--no-prev-options', 'do not reuse the previous options when restarting')
-  .option('--inspect [[host:]port]', 'activate inspector on host:port (127.0.0.1:9229 by default)')
-  .option('--inspectBrk [[host:]port]', 'activate inspector on host:port and break at start of user script (127.0.0.1:9229 by default)');
+  .option('-D, --baseDir [baseDir]', '设置配置的存储根路径', String, undefined)
+  .option('-z, --certDir [directory]', '设置自定义证书存储目录', String, undefined)
+  .option('-l, --localUIHost [hostname]', '设置webui的域名 (' + config.localUIHost + ' 为默认)', String, undefined)
+  .option('-L, --pluginHost [hostname]', '为插件的webui设置域名(如:“script=a.b.com&vase=x.y.com”)', String, undefined)
+  .option('-n, --username [username]', '设置usename访问webui', String, undefined)
+  .option('-w, --password [password]', '设置password访问webui', String, undefined)
+  .option('-N, --guestName [username]', '设置来宾username以访问webui(只能查看数据)', String, undefined)
+  .option('-W, --guestPassword [password]', '设置访客password以访问webui(只能查看数据)', String, undefined)
+  .option('-s, --sockets [number]', '设置每个域名上的最大缓存连接数(' + config.sockets + ' 默认)', parseInt, undefined)
+  .option('-S, --storage [newStorageDir]', '设置已配置的存储目录', String, undefined)
+  .option('-C, --copy [storageDir]', '将指定目录的配置复制到新目录', String, undefined)
+  .option('-c, --dnsCache [time]', '设置DNS的缓存时间(默认为60000ms)', String, undefined)
+  .option('-H, --host [boundHost]', '设置绑定主机(默认为INADDR_ANY)', String, undefined)
+  .option('-p, --port [proxyPort]', '设置代理端口 (' + config.port + ' 默认)', String, undefined)
+  .option('-P, --uiport [uiport]', '设置webui端口', String, undefined)
+  .option('-m, --middlewares [script path or module name]', '设置启动时加载的express Middleware(as:xx,yy/zz.js)', String, undefined)
+  .option('-M, --mode [mode]', '设置启动模式(如:pureProxy|debug|multiEnv|capture|disableH2|network|rules|plugins|prod)', String, undefined)
+  .option('-t, --timeout [ms]', '设置请求超时 (默认为' + config.timeout + 'ms)', parseInt, undefined)
+  .option('-e, --extra [extraData]', '为插件设置额外的参数', String, undefined)
+  .option('-f, --secureFilter [secureFilter]', '设置安全过滤器的路径', String, undefined)
+  .option('-r, --shadowRules [shadowRules]', '设置阴影(默认)规则', String, undefined)
+  .option('-R, --reqCacheSize [reqCacheSize]', '设置请求数据的缓存大小(默认为600)', String, undefined)
+  .option('-F, --frameCacheSize [frameCacheSize]', '设置webSocket和socket帧的缓存大小(默认为512)', String, undefined)
+  .option('-A, --addon [pluginPaths]', '添加自定义插件路径', String, undefined)
+  .option('--config [workers]', '启动群集服务器并设置工作机编号 (默认为os.cpus().length)', String, undefined)
+  .option('--cluster [config]', '从本地文件加载启动配置', String, undefined)
+  .option('--dnsServer [dnsServer]', '设置自定义dns服务器', String, undefined)
+  .option('--socksPort [socksPort]', '设置socksv5服务器端口', String, undefined)
+  .option('--httpPort [httpPort]', '设置http服务器端口', String, undefined)
+  .option('--httpsPort [httpsPort]', '设置https服务器端口', String, undefined)
+  .option('--no-global-plugins', '不要加载任何全局安装的插件')
+  .option('--no-prev-options', '重新启动时不要重复使用前面的选项')
+  .option('--inspect [[host:]port]', '在主机:端口上激活检查器(默认为127.0.0.1:9229)')
+  .option('--inspectBrk [[host:]port]', '在主机上激活检查器:端口并在用户脚本开始时中断(默认为127.0.0.1:9229)');
 
 var argv = process.argv;
 var cmd = argv[2];

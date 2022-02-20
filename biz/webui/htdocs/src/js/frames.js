@@ -68,7 +68,7 @@ var Frames = React.createClass({
             <FrameData data={reqData} frame={curFrame} />
           </Divider>
         </LazyInit>
-        <div className={'w-no-frames' + (frames ? ' hide' : '')}>No Frames</div>
+        <div className={'w-no-frames' + (frames ? ' hide' : '')}>没有框架</div>
       </div>
     );
   }

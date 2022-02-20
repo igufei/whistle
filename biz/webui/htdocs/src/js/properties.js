@@ -66,11 +66,11 @@ var Properties = React.createClass({
       >
         {sourceText ? (
           <div className="w-textarea-bar">
-            <CopyBtn value={sourceText} name="AsText" />
+            <CopyBtn value={sourceText} name="为文本" />
             {this.jsonStr ? (
-              <CopyBtn value={this.jsonStr} name="AsJSON" />
+              <CopyBtn value={this.jsonStr} name="为JSON" />
             ) : undefined}
-            <a onClick={this.toggle}>{viewSource ? 'Form' : 'Text'}</a>
+            <a onClick={this.toggle}>{viewSource ? '表单' : '文本'}</a>
           </div>
         ) : undefined}
         {copyValue ? (

@@ -152,7 +152,7 @@ var Composer = React.createClass({
     this.uploadBodyData = util.parseJSON(storage.get('composerUploadBody'));
     if (body && body !== data.body) {
       message.warn(
-        'The length of the body cannot exceed 128k, and the excess will be truncated.'
+        '主体的长度不能超过128k,多余部分将被截断.'
       );
     }
     return {
@@ -213,7 +213,7 @@ var Composer = React.createClass({
       };
       if (body.length > MAX_BODY_SIZE) {
         win.confirm(
-          'The request body is too long and will be truncated, continue?',
+          '请求正文太长,将被截断,是否继续?',
           function (allow) {
             if (allow) {
               updateComposer();
@@ -283,7 +283,7 @@ var Composer = React.createClass({
       bodyElem.value = value;
       if (value !== body) {
         message.warn(
-          'The length of request body > 128k, and has been truncated.'
+          '请求正文的长度>128k,已被截断.'
         );
       }
     }
@@ -409,7 +409,7 @@ var Composer = React.createClass({
     this.setState({ isHexText: isHexText });
     var body = ReactDOM.findDOMNode(this.refs.body).value;
     if (isHexText && util.getBase64FromHexText(body, true) === false) {
-      message.error('The hex text cannot be converted to binary data.');
+      message.error('十六进制文本无法转换为二进制数据.');
     }
   },
   onCRLFChange: function (e) {
@@ -555,7 +555,7 @@ var Composer = React.createClass({
     var self = this;
     if (!dataCenter.supportH2) {
       win.confirm(
-        'The current version of Node.js cannot support HTTP/2.\nPlease upgrade to the latest LTS version.',
+        '当前Node.js不支持HTTP/2.\n请升级至最新的LTS版本.',
         function (sure) {
           sure && window.open('https://nodejs.org/');
           self.setState({});
@@ -692,7 +692,7 @@ var Composer = React.createClass({
           base64 = util.getBase64FromHexText(body);
           if (base64 === false) {
             win.alert(
-              'The hex text cannot be converted to binary data.\nPlease uncheck the checkbox of HexText option.'
+              '十六进制文本无法转换为二进制数据。\n请取消选中[Hex文本]选项的复选框.'
             );
             return;
           }
@@ -733,7 +733,7 @@ var Composer = React.createClass({
             util.showSystemError(xhr);
           } else if (!em || typeof em !== 'string' || em === 'error') {
             em =
-              'Please check the proxy settings or whether whistle has been started.';
+              '请检查代理设置或whistle是否已启动.';
           }
           state.result = { url: url, req: '', res: { statusCode: em } };
         } else {
@@ -886,14 +886,14 @@ var Composer = React.createClass({
                   className={disabledClass}
                   draggable="false"
                 >
-                  <span className="glyphicon glyphicon-repeat"></span>Replay
+                  <span className="glyphicon glyphicon-repeat"></span>重播
                 </a>
                 <a
                   onClick={this.onCompose}
                   className={disabledClass}
                   draggable="false"
                 >
-                  <span className="glyphicon glyphicon-edit"></span>Compose
+                  <span className="glyphicon glyphicon-edit"></span>编辑
                 </a>
               </div>
             ) : null}
@@ -940,7 +940,7 @@ var Composer = React.createClass({
                 ref="url"
                 type="text"
                 maxLength="8192"
-                placeholder="Input the url"
+                placeholder="请输入网址"
                 className="fill w-composer-input"
               />
               <button
@@ -957,7 +957,7 @@ var Composer = React.createClass({
                 name="Request"
                 className={showRequest ? 'w-tab-btn w-active' : 'w-tab-btn'}
               >
-                Request
+                请求
               </button>
               <button
                 title={result.url}
@@ -965,7 +965,7 @@ var Composer = React.createClass({
                 name="Response"
                 className={showResponse ? 'w-tab-btn w-active' : 'w-tab-btn'}
               >
-                Response
+                响应
               </button>
               <label className="w-composer-enable-body">
                 <input
@@ -974,7 +974,7 @@ var Composer = React.createClass({
                   type="checkbox"
                   onChange={this.onBodyStateChange}
                 />
-                Body
+                正文
               </label>
               <label className="w-composer-enable-rules">
                 <input
@@ -983,7 +983,7 @@ var Composer = React.createClass({
                   checked={!state.disableComposerRules}
                   type="checkbox"
                 />
-                Rules
+                规则
               </label>
               <label className="w-composer-use-h2">
                 <input
@@ -992,7 +992,7 @@ var Composer = React.createClass({
                   onChange={this.toggleH2}
                   checked={dataCenter.supportH2 && useH2}
                 />
-                Use H2
+                使用H2
               </label>
               <label className="w-composer-history">
                 <input
@@ -1001,7 +1001,7 @@ var Composer = React.createClass({
                   onChange={this.toggleHistory}
                   checked={showHistory}
                 />
-                History
+                历史记录
               </label>
             </div>
             <Divider vertical="true" rightWidth="120">
@@ -1018,9 +1018,9 @@ var Composer = React.createClass({
                           type="checkbox"
                           checked={showPretty}
                         />
-                        Pretty
+                        美化
                       </label>
-                      <label className="w-composer-label">Type:</label>
+                      <label className="w-composer-label">类型:</label>
                       <label>
                         <input
                           disabled={pending}
@@ -1029,7 +1029,7 @@ var Composer = React.createClass({
                           type="radio"
                           checked={isForm}
                         />
-                        Form
+                        表单
                       </label>
                       <label>
                         <input
@@ -1039,7 +1039,7 @@ var Composer = React.createClass({
                           type="radio"
                           checked={type === 'upload'}
                         />
-                        Upload
+                        上传
                       </label>
                       <label>
                         <input
@@ -1059,7 +1059,7 @@ var Composer = React.createClass({
                           type="radio"
                           checked={type === 'text'}
                         />
-                        Text
+                        文本
                       </label>
                       <label
                         className="w-custom-type"
@@ -1072,7 +1072,7 @@ var Composer = React.createClass({
                           checked={type === 'custom'}
                           disabled
                         />
-                        Custom
+                        自定义
                       </label>
                       <button
                         disabled={pending}
@@ -1081,7 +1081,7 @@ var Composer = React.createClass({
                         }
                         onClick={this.addHeader}
                       >
-                        Add header
+                        添加标头
                       </button>
                     </div>
                     <textarea
@@ -1091,7 +1091,7 @@ var Composer = React.createClass({
                       maxLength={MAX_HEADERS_SIZE}
                       onKeyDown={this.onKeyDown}
                       ref="headers"
-                      placeholder="Input the headers"
+                      placeholder="请输入标头"
                       name="headers"
                       className={
                         'fill orient-vertical-box' + (showPretty ? ' hide' : '')
@@ -1130,7 +1130,7 @@ var Composer = React.createClass({
                           type="checkbox"
                           onChange={this.onHexTextChange}
                         />
-                        HexText
+                        hex文本
                       </label>
                       <label
                         className={
@@ -1158,7 +1158,7 @@ var Composer = React.createClass({
                         }
                         onClick={this.formatJSON}
                       >
-                        Format JSON
+                        格式化JSON
                       </button>
                       <button
                         disabled={lockBody}
@@ -1172,7 +1172,7 @@ var Composer = React.createClass({
                           showUpload ? this.addUploadFiled : this.addField
                         }
                       >
-                        Add field
+                        添加字段
                       </button>
                     </div>
                     <textarea
@@ -1190,13 +1190,13 @@ var Composer = React.createClass({
                       ref="body"
                       placeholder={
                         hasBody
-                          ? 'Input the ' + (isHexText ? 'hex text' : 'body')
-                          : method + ' operations cannot have a request body'
+                          ? '请输入' + (isHexText ? 'hex文本' : 'body')
+                          : method + ' 操作不能有请求body'
                       }
                       title={
                         hasBody
                           ? undefined
-                          : method + ' operations cannot have a request body'
+                          : method + ' 操作不能有请求body'
                       }
                       className={
                         'fill orient-vertical-box' +
@@ -1242,7 +1242,7 @@ var Composer = React.createClass({
                     </button>
                     <Properties
                       modal={{
-                        'Status Code':
+                        '状态码':
                           statusCode == null ? 'aborted' : statusCode
                       }}
                     />
@@ -1270,7 +1270,7 @@ var Composer = React.createClass({
                       checked={!state.disableComposerRules}
                       type="checkbox"
                     />
-                    Rules
+                    规则
                   </label>
                 </div>
                 <textarea
@@ -1284,7 +1284,7 @@ var Composer = React.createClass({
                   }}
                   maxLength="8192"
                   className="fill orient-vertical-box w-composer-rules"
-                  placeholder="Input the rules"
+                  placeholder="请输入规则"
                 />
               </div>
             </Divider>

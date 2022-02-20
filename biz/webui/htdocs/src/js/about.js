@@ -76,7 +76,7 @@ var About = React.createClass({
         className="w-about-menu"
       >
         <i style={{ display: state.hasUpdate ? 'block' : '' }}></i>
-        <span className="glyphicon glyphicon-info-sign"></span>About
+        <span className="glyphicon glyphicon-info-sign"></span>关于
         <Dialog ref="aboutDialog" wstyle="w-about-dialog">
           <div className="modal-body w-about-has-plugins">
             <button type="button" className="close" data-dismiss="modal">
@@ -128,7 +128,7 @@ var About = React.createClass({
               className="btn btn-default"
               data-dismiss="modal"
             >
-              Close
+              关闭
             </button>
           </div>
         </Dialog>

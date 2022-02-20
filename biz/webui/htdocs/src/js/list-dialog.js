@@ -69,12 +69,12 @@ var ListDialog = React.createClass({
             <span aria-hidden="true">&times;</span>
           </button>
           <p>
-            Filename:
+            文件名:
             <input
               ref="filename"
               style={{ width: 390, display: 'inline-block', marginLeft: 5 }}
               className="form-control"
-              placeholder="Input the filename"
+              placeholder="请输入文件名称"
             />
           </p>
           {list.map(function (name) {
@@ -92,14 +92,14 @@ var ListDialog = React.createClass({
         </div>
         <div className="modal-footer">
           <div className="w-list-counter">
-            Selected: {selectedCount} / {list.length}
+            选中: {selectedCount} / {list.length}
           </div>
           <button
             type="button"
             className="btn btn-default"
             data-dismiss="modal"
           >
-            Cancel
+            取消
           </button>
           <button
             type="button"
@@ -107,7 +107,7 @@ var ListDialog = React.createClass({
             onMouseDown={this.preventDefault}
             onClick={this.onConfirm}
           >
-            Export All
+            导出全部
           </button>
           <button
             type="button"
@@ -116,7 +116,7 @@ var ListDialog = React.createClass({
             onMouseDown={this.preventDefault}
             onClick={this.onConfirm}
           >
-            Export Selected
+            导出选中
           </button>
         </div>
         <form

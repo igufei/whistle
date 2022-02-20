@@ -2,24 +2,24 @@ var React = require('react');
 var MenuItem = require('./menu-item');
 require('../css/record-btn.css');
 var PAUSE_OPTION = {
-  name: 'Pause Record',
+  name: '暂停记录',
   icon: 'minus-sign',
   id: 'pause'
 };
 var STOP_OPTION = {
-  name: 'Stop Record',
+  name: '停止记录',
   icon: 'stop',
   id: 'stop'
 };
 var ACTION_OPTIONS = [
   PAUSE_OPTION,
   {
-    name: 'Scroll To Top',
+    name: '滚动到顶部',
     icon: 'arrow-up',
     id: 'top'
   },
   {
-    name: 'Scroll To Bottom',
+    name: '滚动到底部',
     icon: 'arrow-down',
     id: 'bottom'
   }
@@ -86,7 +86,7 @@ var RecordBtn = React.createClass({
     var hide = this.props.hide;
     var pause = state.pause;
     var stop = state.stop;
-    var title = 'Click to ' + (stop || pause ? 'start' : 'stop') + ' record';
+    var title = '点击' + (stop || pause ? '开启' : '停止') + ' 记录';
 
     return (
       <div
@@ -110,7 +110,7 @@ var RecordBtn = React.createClass({
             style={{ color: !pause && stop ? '#ccc' : '#f66' }}
             className={'glyphicon glyphicon-' + (pause ? 'minus-sign' : 'stop')}
           ></span>
-          Record
+          记录
         </a>
         <MenuItem
           options={ACTION_OPTIONS}

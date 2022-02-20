@@ -83,7 +83,7 @@ var FrameComposer = React.createClass({
   uploadForm: function (form) {
     var file = form.get('uploadData');
     if (file.size > MAX_FILE_SIZE) {
-      return win.alert('The file size cannot exceed 1m.');
+      return win.alert('文件大小不能超过1m.');
     }
     var self = this;
     var params = {
@@ -108,7 +108,7 @@ var FrameComposer = React.createClass({
         return util.showSystemError(xhr);
       }
       if (data.ec !== 0) {
-        return message.error('Server busy, try again later.');
+        return message.error('服务器正忙,请稍后再试.');
       }
       cb && cb();
     });
@@ -125,7 +125,7 @@ var FrameComposer = React.createClass({
       base64 = util.getBase64FromHexText(value);
       if (base64 === false) {
         win.alert(
-          'The hex text cannot be converted to binary data.\nPlease check the hex text or switch to plain text.'
+          '十六进制文本无法转换为二进制数据.\n请检查十六进制文本或切换为文本显示.'
         );
         return;
       }
@@ -184,7 +184,7 @@ var FrameComposer = React.createClass({
       isHexText &&
       util.getBase64FromHexText(this.state.text, true) === false
     ) {
-      message.error('The hex text cannot be converted to binary data.');
+      message.error('十六进制文本无法转换为二进制数据.');
     }
   },
   onCRLFChange: function (e) {
@@ -225,7 +225,7 @@ var FrameComposer = React.createClass({
               onChange={this.onTypeChange}
               type="checkbox"
             />
-            HexText
+            Hex文本
           </label>
           <label
             className={
@@ -251,7 +251,7 @@ var FrameComposer = React.createClass({
               className="btn btn-default btn-sm"
             >
               <span className="glyphicon glyphicon-arrow-left"></span>
-              Send to client
+              发送给客户端
             </button>
             <button
               disabled={disabled}
@@ -269,15 +269,15 @@ var FrameComposer = React.createClass({
               className={'dropdown-menu' + (closed ? ' hide' : '')}
             >
               <li style={displayStyle}>
-                <a onClick={this.onSend}>Send binary data</a>
+                <a onClick={this.onSend}>发送二进制数据</a>
               </li>
               <li>
                 <a onClick={this.uploadTextToClient}>
-                  {isHttps ? 'Upload to client' : 'Upload text data'}
+                  {isHttps ? '上传到客户端' : '上传文本数据'}
                 </a>
               </li>
               <li style={displayStyle}>
-                <a onClick={this.uploadBinToClient}>Upload binary data</a>
+                <a onClick={this.uploadBinToClient}>上传二进制数据</a>
               </li>
             </ul>
           </div>
@@ -292,7 +292,7 @@ var FrameComposer = React.createClass({
               className="btn btn-default btn-sm"
             >
               <span className="glyphicon glyphicon-arrow-right"></span>
-              Send to server
+              发送到服务器
             </button>
             <button
               disabled={disabled}
@@ -311,16 +311,16 @@ var FrameComposer = React.createClass({
             >
               <li style={displayStyle}>
                 <a data-target="server" onClick={this.onSend}>
-                  Send binary data
+                  发送二进制数据
                 </a>
               </li>
               <li>
                 <a onClick={this.uploadTextToServer}>
-                  {isHttps ? 'Upload to server' : 'Upload text data'}
+                  {isHttps ? '上传到服务器' : '上传文本数据'}
                 </a>
               </li>
               <li style={displayStyle}>
-                <a onClick={this.uploadBinToServer}>Upload binary data</a>
+                <a onClick={this.uploadBinToServer}>上传二进制数据</a>
               </li>
             </ul>
           </div>
@@ -331,7 +331,7 @@ var FrameComposer = React.createClass({
             onClick={this.format}
             className="btn btn-default w-format-json-btn"
           >
-            Format
+            格式化
           </button>
         </div>
         <textarea
@@ -339,7 +339,7 @@ var FrameComposer = React.createClass({
           maxLength={MAX_LENGTH}
           value={text}
           onChange={this.onTextareaChange}
-          placeholder={'Input the ' + (isHexText ? 'hex ' : '') + 'text'}
+          placeholder={'请输入' + (isHexText ? 'hex ' : '') + '文本'}
           className="fill"
         />
         <form

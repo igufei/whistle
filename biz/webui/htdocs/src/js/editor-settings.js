@@ -8,7 +8,7 @@ var EditorSettings = React.createClass({
       <div className="w-editor-settings">
         <p>
           <label>
-            <span className="w-label">Theme:</span>
+            <span className="w-label">主题:</span>
             <select
               value={this.props.theme}
               onChange={this.props.onThemeChange}
@@ -38,7 +38,7 @@ var EditorSettings = React.createClass({
         </p>
         <p>
           <label>
-            <span className="w-label">Font size:</span>
+            <span className="w-label">字体大小:</span>
             <select
               value={this.props.fontSize}
               onChange={this.props.onFontSizeChange}
@@ -67,7 +67,7 @@ var EditorSettings = React.createClass({
               onChange={this.props.onLineNumberChange}
               type="checkbox"
             />{' '}
-            Show line number
+            显示行号
           </label>
         </p>
         <p className="w-editor-settings-box">
@@ -77,7 +77,7 @@ var EditorSettings = React.createClass({
               onChange={this.props.onLineWrappingChange}
               type="checkbox"
             />{' '}
-            Auto line wrapping
+            自动换行
           </label>
         </p>
       </div>

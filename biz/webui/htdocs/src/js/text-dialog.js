@@ -41,14 +41,14 @@ var TextDialog = React.createClass({
             className="btn btn-primary w-copy-text-with-tips"
             data-clipboard-text={value}
           >
-            Copy
+            复制
           </button>
           <button
             type="button"
             className="btn btn-default"
             data-dismiss="modal"
           >
-            Close
+            关闭
           </button>
         </div>
       </Dialog>

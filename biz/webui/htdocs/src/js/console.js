@@ -20,7 +20,7 @@ var MAX_FILE_SIZE = 1024 * 1024 * 2;
 
 var allLogs = {
   value: '',
-  text: 'All logs'
+  text: '全部'
 };
 
 function parseLog(log, expandRoot) {
@@ -64,27 +64,27 @@ var Console = React.createClass({
       levels: [
         {
           value: '',
-          text: 'All levels'
+          text: '默认'
         },
         {
           value: 'debug',
-          text: 'Debug'
+          text: '调试'
         },
         {
           value: 'info',
-          text: 'Info/Log'
+          text: '信息'
         },
         {
           value: 'warn',
-          text: 'Warn'
+          text: '警告'
         },
         {
           value: 'error',
-          text: 'Error'
+          text: '错误'
         },
         {
           value: 'fatal',
-          text: 'Fatal'
+          text: '致命'
         }
       ],
       expandRoot: storage.get('expandJsonRoot') != 1
@@ -160,10 +160,10 @@ var Console = React.createClass({
     var form = new FormData(ReactDOM.findDOMNode(this.refs.importDataForm));
     var file = form.get('importData');
     if (!file || !/\.log$/i.test(file.name)) {
-      return win.alert('Only supports .log file.');
+      return win.alert('只支持 .log 文件.');
     }
     if (file.size > MAX_FILE_SIZE) {
-      return win.alert('The file size cannot exceed 2m.');
+      return win.alert('文件大小不能超过2m.');
     }
     util.readFileAsText(file, function (logs) {
       logs = util.parseLogs(logs);
@@ -340,11 +340,11 @@ var Console = React.createClass({
               defaultChecked={expandRoot}
               onChange={this.changeExpandRoot}
             />
-            Expand JSON Root
+            展开Json
           </label>
           <div className="w-textarea-bar">
             <a className="w-import" onClick={this.selectFile} draggable="false">
-              Import
+              导入
             </a>
             <a
               className={'w-download' + (disabled ? ' w-disabled' : '')}
@@ -352,7 +352,7 @@ var Console = React.createClass({
               onClick={disabled ? undefined : this.showNameInput}
               draggable="false"
             >
-              Export
+              导出
             </a>
             <RecordBtn onClick={this.handleAction} />
             <a
@@ -360,7 +360,7 @@ var Console = React.createClass({
               onClick={disabled ? undefined : this.clearLogs}
               draggable="false"
             >
-              Clear
+              清理
             </a>
             <div
               onMouseDown={this.preventBlur}
@@ -373,14 +373,14 @@ var Console = React.createClass({
                 onBlur={this.hideNameInput}
                 type="text"
                 maxLength="64"
-                placeholder="Input the filename"
+                placeholder="请输入文件名称"
               />
               <button
                 type="button"
                 onClick={this.submit}
                 className="btn btn-primary"
               >
-                OK
+               好的
               </button>
             </div>
             <form

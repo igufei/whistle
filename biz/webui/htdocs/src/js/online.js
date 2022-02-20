@@ -15,13 +15,13 @@ var dialog;
 function createDialog() {
   if (!dialog) {
     var proxyInfoList = [
-      '<h5><strong>Uptime:</strong> <span id="whistleUptime">-</span></h5>',
-      '<h5><strong>All Requests:</strong> <span id="whistleAllRequests">-</span></h5>',
-      '<h5><strong>All QPS:</strong> <span id="whistleAllQps">-</span></h5>',
-      '<h5><strong>Requests:</strong> <span id="whistleRequests">-</span></h5>',
+      '<h5><strong>运行时间:</strong> <span id="whistleUptime">-</span></h5>',
+      '<h5><strong>所有请求:</strong> <span id="whistleAllRequests">-</span></h5>',
+      '<h5><strong>所有QPS:</strong> <span id="whistleAllQps">-</span></h5>',
+      '<h5><strong>请求:</strong> <span id="whistleRequests">-</span></h5>',
       '<h5><strong>QPS:</strong> <span id="whistleQps">-</span></h5>',
       '<h5><strong>CPU:</strong> <span id="whistleCpu">-</span></h5>',
-      '<h5><strong>Memory:</strong> <span id="whistleMemory">-</span></h5>'
+      '<h5><strong>内存:</strong> <span id="whistleMemory">-</span></h5>'
     ];
     dialog = $(
       '<div class="modal fade w-online-dialog">' +
@@ -36,7 +36,7 @@ function createDialog() {
         '<a class="w-online-view-dns">View custom DNS servers</a>' +
         '</div>' +
         '<div class="modal-footer">' +
-        '<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>' +
+        '<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>' +
         '</div>' +
         '</div>' +
         '</div>' +
@@ -121,32 +121,32 @@ var Online = React.createClass({
     }
     var host = util.escape(server.host);
     if (host) {
-      info.push('<h5><strong>Host:</strong> ' + host + '</h5>');
+      info.push('<h5><strong>主机:</strong> ' + host + '</h5>');
     }
     if (server.pid) {
       info.push('<h5><strong>PID:</strong> ' + server.pid + '</h5>');
     }
     if (server.nodeVersion) {
-      info.push('<h5><strong>Node:</strong> ' + server.nodeVersion + '</h5>');
+      info.push('<h5><strong>Node版本:</strong> ' + server.nodeVersion + '</h5>');
     }
     if (server.version) {
-      info.push('<h5><strong>Whistle:</strong> v' + server.version + '</h5>');
+      info.push('<h5><strong>Whistle版本:</strong> v' + server.version + '</h5>');
     }
     var port = server.realPort || server.port;
     if (port) {
-      info.push('<h5><strong>Port:</strong> ' + port + '</h5>');
+      info.push('<h5><strong>端口:</strong> ' + port + '</h5>');
     }
     if (server.socksPort) {
       info.push(
-        '<h5><strong>SOCKS Port:</strong> ' + server.socksPort + '</h5>'
+        '<h5><strong>SOCKS端口:</strong> ' + server.socksPort + '</h5>'
       );
     }
     if (server.httpPort) {
-      info.push('<h5><strong>HTTP Port:</strong> ' + server.httpPort + '</h5>');
+      info.push('<h5><strong>HTTP端口:</strong> ' + server.httpPort + '</h5>');
     }
     if (server.httpsPort) {
       info.push(
-        '<h5><strong>HTTPS Port:</strong> ' + server.httpsPort + '</h5>'
+        '<h5><strong>HTTPS端口:</strong> ' + server.httpsPort + '</h5>'
       );
     }
     if (server.ipv4.length) {
@@ -445,7 +445,7 @@ var Online = React.createClass({
         onClick={this.showServerInfo}
       >
         <span className="glyphicon glyphicon-stats"></span>
-        {server ? 'Online' : 'Offline'}
+        {server ? '在线' : '离线'}
         {server && server.dns ? (
           <span>{server.doh ? '(DOH)' : server.r6 ? '(IPv6)' : '(IPv4)'}</span>
         ) : null}
@@ -457,9 +457,9 @@ var Online = React.createClass({
             <button type="button" className="close" data-dismiss="modal">
               <span aria-hidden="true">&times;</span>
             </button>
-            The proxy has been modified.
+            代理已被修改.
             <br />
-            Do you want to reload this page.
+            是否要重新加载此页面.
           </div>
           <div className="modal-footer">
             <button
@@ -467,14 +467,14 @@ var Online = React.createClass({
               className="btn btn-default"
               data-dismiss="modal"
             >
-              Cancel
+              取消
             </button>
             <button
               type="button"
               className="btn btn-primary"
               onClick={this.reload}
             >
-              Reload
+              重新加载
             </button>
           </div>
         </Dialog>

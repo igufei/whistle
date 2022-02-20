@@ -34,8 +34,8 @@ function createConfirm() {
         '<pre></pre>' +
         '</div>' +
         '<div class="modal-footer">' +
-        '<button type="button" class="btn btn-default w-win-cancel" data-dismiss="modal">Cancel</button>' +
-        '<button type="button" class="btn btn-primary w-win-confirm" data-dismiss="modal">Confirm</button>' +
+        '<button type="button" class="btn btn-default w-win-cancel" data-dismiss="modal">取消</button>' +
+        '<button type="button" class="btn btn-primary w-win-confirm" data-dismiss="modal">确认</button>' +
         '</div>' +
         '</div>' +
         '</div>' +

@@ -93,7 +93,7 @@ var FilesDialog = React.createClass({
       this.show();
       setTimeout(function () {
         win.alert(
-          'The number of uploaded files cannot exceed 60,\ndelete the unnecessary files first.'
+          '上载的文件数不能超过60,\n请先删除不必要的文件.'
         );
       }, 10);
       return false;
@@ -120,7 +120,7 @@ var FilesDialog = React.createClass({
         self.updateFiles(data.files);
         if (data.isMax) {
           return win.alert(
-            'The number of uploaded files cannot exceed 60,\ndelete the unnecessary files first.'
+            '上载的文件数不能超过60,\n请先删除不必要的文件.'
           );
         }
         var handleUpload = function (sure) {
@@ -153,7 +153,7 @@ var FilesDialog = React.createClass({
           return handleUpload(true);
         }
         win.confirm(
-          'The name `' + name + '`  already exists, whether to overwrite it?',
+          '`' + name + '`  已经存在,是否覆盖它？?',
           handleUpload
         );
       }
@@ -172,10 +172,10 @@ var FilesDialog = React.createClass({
   },
   submit: function (file) {
     if (!file.size) {
-      return win.alert('The file size cannot be empty.');
+      return win.alert('文件大小不能为空.');
     }
     if (file.size > MAX_FILE_SIZE) {
-      return win.alert('The file size cannot exceed 20m.');
+      return win.alert('文件大小不能超过20m.');
     }
     var self = this;
     var params = {};
@@ -200,7 +200,7 @@ var FilesDialog = React.createClass({
   remove: function (e) {
     var name = e.target.getAttribute('data-name');
     var self = this;
-    win.confirm('Are you sure to delete \'' + name + '\'.', function (sure) {
+    win.confirm('你确定要删除\'' + name + '\'吗.', function (sure) {
       if (!sure) {
         return;
       }
@@ -238,11 +238,11 @@ var FilesDialog = React.createClass({
             >
               <span className="glyphicon glyphicon-question-sign"></span>
             </a>
-            System Files
+            系统文件
           </h4>
           <button className="w-files-upload-btn" onClick={self.selectFile}>
             <span className="glyphicon glyphicon-arrow-up"></span>
-            Drop file here or click to browse (size &lt;= 20m)
+            将文件拖到此处或单击选择(大小&lt;=20m)
           </button>
           <table
             className="table"
@@ -250,9 +250,9 @@ var FilesDialog = React.createClass({
           >
             <thead>
               <th className="w-files-order">#</th>
-              <th className="w-files-date">Date</th>
-              <th className="w-files-path">Path</th>
-              <th className="w-files-operation">Operation</th>
+              <th className="w-files-date">日期</th>
+              <th className="w-files-path">路径</th>
+              <th className="w-files-operation">操作</th>
             </thead>
             <tbody>
               {files.map(function (file, i) {
@@ -267,13 +267,13 @@ var FilesDialog = React.createClass({
                         className="w-copy-text-with-tips"
                         data-clipboard-text={filePath}
                       >
-                        Copy path
+                        复制路径
                       </a>
                       <a data-name={file.name} onClick={self.downloadFile}>
-                        Download
+                        下载
                       </a>
                       <a data-name={file.name} onClick={self.remove}>
-                        Delete
+                        删除
                       </a>
                     </td>
                   </tr>
@@ -288,7 +288,7 @@ var FilesDialog = React.createClass({
             className="btn btn-default"
             data-dismiss="modal"
           >
-            Close
+            关闭
           </button>
         </div>
         <form
@@ -312,11 +312,11 @@ var FilesDialog = React.createClass({
           </div>
           <div className="modal-body">
             <label className="w-files-name">
-              Name:
+               名称:
               <input
                 ref="filename"
                 maxLength="60"
-                placeholder="Input the filename"
+                placeholder="请输入文件名称"
                 type="text"
                 className="form-control"
               />
@@ -328,21 +328,21 @@ var FilesDialog = React.createClass({
               className="btn btn-default"
               onClick={this.download}
             >
-              Download
+              下载
             </button>
             <button
               type="button"
               className="btn btn-primary"
               onClick={this.onConfirm}
             >
-              Confirm
+              确认
             </button>
             <button
               type="button"
               className="btn btn-default"
               data-dismiss="modal"
             >
-              Close
+              关闭
             </button>
           </div>
         </Dialog>

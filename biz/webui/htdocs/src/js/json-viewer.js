@@ -76,12 +76,12 @@ var JsonViewer = React.createClass({
       return;
     }
     if (!name) {
-      message.error('The key cannot be empty.');
+      message.error('key不能为空.');
       return;
     }
 
     if (/\s/.test(name)) {
-      message.error('The key cannot have spaces.');
+      message.error('key不能有空格.');
       return;
     }
     var handleSubmit = function (sure) {
@@ -103,7 +103,7 @@ var JsonViewer = React.createClass({
       return handleSubmit(true);
     }
     win.confirm(
-      'The key \'' + name + '\' already exists.\nDo you want to override it.',
+      '\'' + name + '\' 已经存在了。\n你想覆盖它吗?',
       handleSubmit
     );
   },
@@ -182,18 +182,18 @@ var JsonViewer = React.createClass({
             onClick={this.showNameInput}
             draggable="false"
           >
-            Download
+            下载
           </a>
           <a className="w-add" onClick={this.showNameInput} draggable="false">
-            +Key
+            添加Key
           </a>
           {viewSource ? (
             <a className="w-edit" onClick={this.edit} draggable="false">
-              ViewAll
+              查看全部
             </a>
           ) : undefined}
           <a onClick={this.toggle} className="w-properties-btn">
-            {viewSource ? 'JSON' : 'Text'}
+            {viewSource ? 'JSON' : '文本'}
           </a>
           <div
             onMouseDown={this.preventBlur}
@@ -207,7 +207,7 @@ var JsonViewer = React.createClass({
               type="text"
               maxLength="64"
               placeholder={
-                state.showDownloadInput ? 'Input the filename' : 'Input the key'
+                state.showDownloadInput ? '请输入文件名称' : '请输入Key'
               }
             />
             <button

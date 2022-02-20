@@ -11,21 +11,22 @@ var util = require('./util');
 
 var BTNS = [
   {
-    name: 'Console',
+    name: '控制台', key: 'Console',
     icon: 'file',
     active: true
   },
   {
-    name: 'Server',
+    name: '服务', key: 'Server',
     icon: 'exclamation-sign'
   },
-  {
-    name: 'Toolbox',
+/*   {
+    name: '工具箱', key: 'Toolbox',
     icon: 'wrench'
-  } /* ,
+  }
+  ,
   {
-    name: 'Favorites',
-    icon: 'heart'
+    name: '最爱', key: 'Favorites',
+    icon: 'wrench'
   } */
 ];
 
@@ -47,8 +48,8 @@ var Tools = React.createClass({
   },
   toggleTabs: function (btn) {
     this.changeTab = true;
-    this.state['inited' + btn.name] = true;
-    this.setState({ name: btn.name });
+    this.state['inited' + btn.key] = true;
+    this.setState({ name: btn.key });
   },
   clearLogs: function (btn) {
     this.refs[this.isConsole() ? 'console' : 'serverLog'].clearLogs();

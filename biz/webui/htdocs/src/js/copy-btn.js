@@ -21,7 +21,7 @@ var CopyBtn = React.createClass({
         draggable="false"
         data-clipboard-text={this.props.value || ''}
       >
-        {(copied ? 'Copied' : 'Copy') + (this.props.name || '')}
+        {(copied ? '已复制' : '复制') + (this.props.name || '')}
       </a>
     );
   }

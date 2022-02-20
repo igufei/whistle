@@ -165,13 +165,13 @@ var ToolBox = React.createClass({
         }
       >
         <div className="w-detail-inspectors-title">
-          <span className="glyphicon glyphicon-qrcode"></span>QRCode
+          <span className="glyphicon glyphicon-qrcode"></span>二维码
           <button
             className="btn btn-primary"
             disabled={!NOT_EMPTY_RE.test(qrcodeValue)}
             onClick={this.generageQRCode}
           >
-            Show
+            生成
           </button>
         </div>
         <textarea
@@ -179,16 +179,16 @@ var ToolBox = React.createClass({
           value={qrcodeValue}
           className="w-tool-box-ctn"
           maxLength={MAX_QRCODE_LEN}
-          placeholder="Input the URL"
+          placeholder="请输入内容"
         />
         <div className="w-detail-inspectors-title">
-          <span className="glyphicon glyphicon-pencil"></span>JSONView
+          <span className="glyphicon glyphicon-pencil"></span>JSON
           <button
             className="btn btn-primary"
             disabled={!NOT_EMPTY_RE.test(jsonValue)}
             onClick={this.parseJSON}
           >
-            View
+            解析
           </button>
         </div>
         <textarea
@@ -196,16 +196,16 @@ var ToolBox = React.createClass({
           value={jsonValue}
           className="w-tool-box-ctn"
           maxLength={MAX_JSON_LEN}
-          placeholder="Input the JSON text"
+          placeholder="请输入JSON字符串"
         />
-        <div className="w-detail-inspectors-title" style={{ height: 20 }}>
+        <div className="w-detail-inspectors-title">
           <button
             className="btn btn-default"
             style={{ float: 'left' }}
             disabled={!NOT_EMPTY_RE.test(codecText)}
             onClick={this.encode}
           >
-            EncodeURIComponent
+            URL编码
           </button>
           <button
             className="btn btn-default"
@@ -213,7 +213,7 @@ var ToolBox = React.createClass({
             disabled={!NOT_EMPTY_RE.test(codecText)}
             onClick={this.decode}
           >
-            DecodeURIComponent
+            URL解码
           </button>
           <button
             className="btn btn-default"
@@ -221,14 +221,14 @@ var ToolBox = React.createClass({
             disabled={!NOT_EMPTY_RE.test(codecText)}
             onClick={this.toQuery}
           >
-            Query
+            查询字符串
           </button>
           <button
             className="btn btn-primary"
             disabled={!NOT_EMPTY_RE.test(codecText)}
             onClick={this.showShadowRules}
           >
-            ShadowRules
+            Shadow规则
           </button>
         </div>
         <textarea
@@ -236,12 +236,12 @@ var ToolBox = React.createClass({
           value={codecText}
           className="w-tool-box-ctn"
           maxLength={MAX_TEXT_LEN}
-          placeholder="Input the text"
+          placeholder="请输入文本"
         />
         <div className="w-detail-inspectors-title">
-          <span className="glyphicon glyphicon-picture"></span>Base64
+          <span className="glyphicon glyphicon-picture"></span>图片转base64
           <button className="btn btn-primary" onClick={this.uploadImg}>
-            Upload
+            上传
           </button>
         </div>
         <button
@@ -249,16 +249,16 @@ var ToolBox = React.createClass({
           onClick={this.uploadImg}
         >
           <span className="glyphicon glyphicon-arrow-up"></span>
-          Click here to upload image (size &lt;= 1m)
+          点击此处上传图片(大小&lt;=1m)
         </button>
         <div className="w-detail-inspectors-title">
-          <span className="glyphicon glyphicon-certificate"></span>Certificate
+          <span className="glyphicon glyphicon-certificate"></span>证书
         </div>
         <div className="box w-generate-cert">
           <input
             className="fill"
             maxLength="64"
-            placeholder="Input the domain name of the certificate"
+            placeholder="输入证书的域名"
             value={domainValue}
             onChange={this.onDomainChange}
           />
@@ -267,7 +267,7 @@ var ToolBox = React.createClass({
             disabled={!domainValue || !URL_RE.test(domainValue)}
             onClick={this.generateCert}
           >
-            Download
+            下载
           </button>
         </div>
         <QRCodeDialog ref="qrcodeDialog" />

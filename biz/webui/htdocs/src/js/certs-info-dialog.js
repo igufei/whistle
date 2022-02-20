@@ -105,7 +105,7 @@ var HistoryData = React.createClass({
   removeCert: function (item) {
     var self = this;
     win.confirm(
-      'Are you sure to delete \'' + item.filename + '\'.',
+      '你确定要删除\'' + item.filename + '\'吗?',
       function (sure) {
         if (!sure) {
           return;
@@ -122,19 +122,19 @@ var HistoryData = React.createClass({
     for (var i = 0, len = fileList.length; i < len; i++) {
       var cert = fileList[i];
       if (cert.size > MAX_CERT_SIZE || !(cert.size > 0)) {
-        message.error('The uploaded certificate size cannot exceed 128K.');
+        message.error('上载的证书大小不能超过128K.');
         return;
       }
       var { name } = cert;
       if (!/\.(crt|key)/.test(name)) {
-        message.error('Only files with .key or .crt suffixes are supported.');
+        message.error('只支持.key 或者 .crt的后缀.');
         return;
       }
       var suffix = RegExp.$1;
       name = name.slice(0, -4);
       if (!name || name.length > 128) {
         message.error(
-          'The file name cannot be empty and the length cannot exceed 128.'
+          '文件名不能为空,长度不能超过128.'
         );
         return;
       }
@@ -167,7 +167,7 @@ var HistoryData = React.createClass({
     if (files.root) {
       var dir = self._certsDir || '~/.WhistleAppData/custom_certs';
       win.alert(
-        'Root CA cannot be uploaded by UI.\nYou must manually upload to follow directory and restart Whistle:\n' +
+        '用户界面无法上载根证书。\n您必须手动上传到follow目录并重新启动Whistle\n' +
           dir
       );
       delete files.root;
@@ -214,15 +214,15 @@ var HistoryData = React.createClass({
             >
               <span className="glyphicon glyphicon-question-sign"></span>
             </a>
-            Custom Certs
+            自定义证书
           </h4>
           <table className="table">
             <thead>
               <th className="w-certs-info-order">#</th>
-              <th className="w-certs-info-filename">Filename</th>
-              <th className="w-certs-info-domain">DNS Name</th>
-              <th className="w-certs-info-validity">Validity</th>
-              <th className="w-certs-info-status">Status</th>
+              <th className="w-certs-info-filename">文件名</th>
+              <th className="w-certs-info-domain">DNS名称</th>
+              <th className="w-certs-info-validity">有效性</th>
+              <th className="w-certs-info-status">状态</th>
             </thead>
             <tbody>
               {list.length ? (
@@ -272,7 +272,7 @@ var HistoryData = React.createClass({
               ) : (
                 <tr>
                   <td colSpan="5" className="w-empty">
-                    Empty
+                    空的
                   </td>
                 </tr>
               )}
@@ -296,14 +296,14 @@ var HistoryData = React.createClass({
             className="btn btn-primary"
             onClick={self.showUpload}
           >
-            Upload
+            上传
           </button>
           <button
             type="button"
             className="btn btn-default"
             data-dismiss="modal"
           >
-            Close
+            关闭
           </button>
         </div>
         <TipsDialog ref="tipsDialog" />

@@ -131,7 +131,7 @@ var Timeline = React.createClass({
                 >
                   <ul>
                     <li>
-                      <span className="w-detail-timeline-url">URL:</span>
+                      <span className="w-detail-timeline-url">网址:</span>
                       <span
                         className="w-detail-timeline-full-url"
                         title={item.url}
@@ -140,7 +140,7 @@ var Timeline = React.createClass({
                       </span>
                     </li>
                     <li>
-                      <span className="w-detail-timeline-url">DNS Lookup:</span>
+                      <span className="w-detail-timeline-url">DNS解析耗时:</span>
                       <span
                         style={{ width: dnsRate }}
                         className="w-detail-timeline-dns"
@@ -151,7 +151,7 @@ var Timeline = React.createClass({
                     </li>
                     <li>
                       <span className="w-detail-timeline-url">
-                        Request Sent:
+                        发送请求耗时:
                       </span>
                       <span style={{ width: dnsRate }}></span>
                       <span
@@ -166,7 +166,7 @@ var Timeline = React.createClass({
                     </li>
                     <li>
                       <span className="w-detail-timeline-url">
-                        Response Headers:
+                        响应耗时:
                       </span>
                       <span style={{ width: dnsRate }}></span>
                       {isStream ? null : (
@@ -182,7 +182,7 @@ var Timeline = React.createClass({
                     </li>
                     <li>
                       <span className="w-detail-timeline-url">
-                        Content Loaded:
+                        内容加载耗时:
                       </span>
                       <span style={{ width: dnsRate }}></span>
                       {isStream ? null : (
@@ -198,7 +198,7 @@ var Timeline = React.createClass({
                       </span>
                     </li>
                     <li>
-                      <span className="w-detail-timeline-url">Total:</span>
+                      <span className="w-detail-timeline-url">全部耗时:</span>
                       <span title={title} className="w-detail-timeline-time">
                         {total}
                       </span>

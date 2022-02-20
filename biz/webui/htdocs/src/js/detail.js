@@ -15,31 +15,36 @@ var ReqData = React.createClass({
     return {
       tabs: [
         {
-          name: 'Overview',
+          name: '常规',
+          key: 'Overview',
           icon: 'eye-open'
         },
         {
-          name: 'Inspectors',
+          name: '检查器',
+          key: 'Inspectors',
           icon: 'search'
         },
-        {
-          name: 'Composer',
+/*         {
+          name: '模拟请求',
+          key: 'Composer',
           icon: 'edit'
-        },
+        }, */
         {
-          name: 'Timeline',
+          name: '时间线',
+          key: 'Timeline',
           icon: 'time'
         },
         {
-          name: 'Tools',
-          icon: 'wrench'
+          name: '日志',
+          key: 'Tools',
+          icon: 'file'
         }
       ],
       initedOverview: false,
       initedInspectors: false,
       initedFrames: false,
       initedTimeline: false,
-      initedComposer: false,
+      //initedComposer: false,
       initedTools: false
     };
   },
@@ -70,10 +75,10 @@ var ReqData = React.createClass({
         }
       })
       .on('showTimeline', function () {
-        self.toggleTab(tabs[3]);
+        self.toggleTab(tabs[2]);
       })
       .on('showLog', function () {
-        self.toggleTab(tabs[4]);
+        self.toggleTab(tabs[3]);
       })
       .on('composer', function (e, item) {
         var modal = self.props.modal;
@@ -99,10 +104,13 @@ var ReqData = React.createClass({
   showComposer: function (item) {
     if (item) {
       this.state.activeItem = item;
+      events.trigger('setComposer');
+      events.trigger('showComposer', item);
     }
-    this.toggleTab(this.state.tabs[2], function () {
+    
+    /* this.toggleTab(this.state.tabs[2], function () {
       item && events.trigger('setComposer');
-    });
+    }); */
   },
   onDragEnter: function (e) {
     if (e.dataTransfer.types.indexOf('reqdataid') != -1) {
@@ -129,7 +137,7 @@ var ReqData = React.createClass({
     events.trigger('ensureSelectedItemVisible');
   },
   toggleTab: function (tab, callback) {
-    if (tab.name === 'Inspectors' && this.state.initedInspectors) {
+    if (tab.key === 'Inspectors' && this.state.initedInspectors) {
       var inspectors = $('.w-detail-inspectors');
       if (inspectors.length) {
         var detail = $('.w-detail');
@@ -149,7 +157,7 @@ var ReqData = React.createClass({
     });
     tab.active = true;
     this.state.tab = tab;
-    this.state['inited' + tab.name] = true;
+    this.state['inited' + tab.key] = true;
   },
   render: function () {
     var modal = this.props.modal;
@@ -207,7 +215,7 @@ var ReqData = React.createClass({
       });
       this.selectTab(curTab);
     }
-    var name = curTab && curTab.name;
+    var name = curTab && curTab.key;
 
     var frames = activeItem && activeItem.frames;
     var dockToBottom = this.props.dockToBottom;
@@ -243,25 +251,25 @@ var ReqData = React.createClass({
           tabs={tabs}
         />
         {this.state.initedOverview ? (
-          <Overview modal={overview} hide={name != tabs[0].name} />
+          <Overview modal={overview} hide={name != tabs[0].key} />
         ) : null}
         {this.state.initedInspectors ? (
           <Inspectors
             modal={activeItem}
             frames={frames}
-            hide={name != tabs[1].name}
+            hide={name != tabs[1].key}
           />
         ) : null}
-        {this.state.initedComposer ? (
+        {/* {this.state.initedComposer ? (
           <ComposerList
             modal={this.state.activeItem}
-            hide={name != tabs[2].name}
+            hide={name != tabs[2].key}
           />
-        ) : null}
+        ) : null} */}
         {this.state.initedTimeline ? (
-          <Timeline data={data} modal={modal} hide={name != tabs[3].name} />
+          <Timeline data={data} modal={modal} hide={name != tabs[2].key} />
         ) : null}
-        {this.state.initedTools ? <Tools hide={name != tabs[4].name} /> : null}
+        {this.state.initedTools ? <Tools hide={name != tabs[3].key} /> : null}
       </div>
     );
   }

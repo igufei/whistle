@@ -87,7 +87,7 @@ var FrameClient = React.createClass({
           Date: util.toLocaleString(new Date(parseInt(frame.frameId, 10))),
           Path: frame.isClient ? 'Client -> Server' : 'Server -> Client',
           Opcode: frame.opcode,
-          Type: frame.opcode == 1 ? 'Text' : 'Binary',
+          Type: frame.opcode == 1 ? '文本' : '二定制',
           Compressed: frame.compressed ? 'Yes' : 'No',
           Mask: frame.mask ? 'Yes' : 'No',
           Length:

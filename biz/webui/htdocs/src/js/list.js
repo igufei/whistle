@@ -15,53 +15,83 @@ var iframes = require('./iframes');
 var RecycleBinDialog = require('./recycle-bin');
 
 var disabledEditor = window.location.href.indexOf('disabledEditor=1') !== -1;
-var rulesCtxMenuList = [
-  {
-    name: 'Copy',
-    list: [{ name: 'Name' }, { name: 'Rules' }]
-  },
-  { name: 'Enable', action: 'Save' },
-  {
-    name: 'Create',
-    action: 'Rule'
-  },
-  { name: 'Rename' },
-  { name: 'Delete' },
-  { name: 'Export' },
-  { name: 'Import' },
-  { name: 'Trash' },
-  {
-    name: 'Others',
-    action: 'Plugins',
-    list: []
-  },
-  { name: 'Help', sep: true }
+var rulesCtxMenuList = [{
+  name: '复制',
+  action: 'Copy',
+  list: [{
+    name: '名称',
+    action: 'Name'
+  }, {
+    name: '规则',
+    action: 'Rules'
+  }]
+},
+{
+  name: '开启',
+  action: 'Save'
+},
+{
+  name: '创建',
+  action: 'Rule'
+},
+{
+  name: '重命名',
+  action: 'Rename'
+},
+{
+  name: '删除',
+  action: 'Delete'
+},
+{
+  name: '导出',
+  action: 'Export'
+},
+{
+  name: '导入',
+  action: 'Import'
+},
+{
+  name: '废纸篓',
+  action: 'Trash'
+},
+{
+  name: '其它',
+  action: 'Plugins',
+  list: []
+},
+{
+  name: '帮助',
+  action: 'Help',
+  sep: true
+}
 ];
 var valuesCtxMenuList = [
   {
-    name: 'Copy',
+    name: '复制', action: 'Copy',
     list: [{ name: 'Key', action: 'CopyKey' }, { name: 'Value' }]
   },
-  { name: 'Save' },
+  { name: '保存', action: 'Save'},
   {
-    name: 'Create',
+    name: '创建',
     action: 'Key'
   },
-  { name: 'Rename' },
-  { name: 'Delete' },
+  { name: '重命名', action: 'Rename'},
+  { name: '删除', action: 'Delete'},
   {
-    name: 'JSON',
-    list: [{ name: 'Validate' }, { name: 'Format' }]
+    name: 'JSON', action: 'JSON',
+    list: [{ name: '验证', action: 'Validate' }, {
+      name: '格式化', action: 'Format'
+}]
   },
-  { name: 'Export' },
-  { name: 'Import' },
-  { name: 'Trash' },
+  { name: '导出', action: 'Export' },
+  { name: '导入', action: 'Import'},
+  { name: '废纸篓', action: 'Trash'},
   {
-    name: 'Others',
+    name: '其它',
     action: 'Plugins',
     list: []
   },
-  { name: 'Help', sep: true }
+  { name: '帮助', action: 'Help', sep: true }
 ];
 var NAME_PREFIX = 'listmodal$';
 var JSON_RE = /^\s*(?:[\{｛][\w\W]+[\}｝]|\[[\w\W]+\])\s*$/;
@@ -356,7 +386,7 @@ var List = React.createClass({
         return;
       }
       if (!data.list.length) {
-        return message.info('Trash is empty.');
+        return message.info('垃圾是空的.');
       }
       self.refs.recycleBinDialog.show({ name: name, list: data.list });
     });
@@ -364,78 +394,79 @@ var List = React.createClass({
   onClickContextMenu: function (action, e, parentAction, menuName) {
     var self = this;
     var name = self.props.name === 'rules' ? 'Rules' : 'Values';
+    console.log(name, parentAction, action)
     switch (parentAction || action) {
-    case 'Save':
-      events.trigger('save' + name, self.currentFocusItem);
-      break;
-    case 'Rename':
-      events.trigger('rename' + name, self.currentFocusItem);
-      break;
-    case 'Delete':
-      events.trigger('delete' + name, self.currentFocusItem);
-      break;
-    case 'Rule':
-      events.trigger('createRules');
-      break;
-    case 'Key':
-      events.trigger('createValues');
-      break;
-    case 'ruleGroup':
-      events.trigger('createRuleGroup');
-      break;
-    case 'valueGroup':
-      events.trigger('createValueGroup');
-      break;
-    case 'Export':
-      events.trigger('export' + name);
-      break;
-    case 'Import':
-      events.trigger('import' + name, e);
-      break;
-    case 'Trash':
-      self.showRecycleBin(name);
-      break;
-    case 'Validate':
-      var item = self.currentFocusItem;
-      if (item) {
-        if (JSON_RE.test(item.value)) {
-          try {
-            JSON.parse(item.value);
-            message.success('Good JSON Object.');
-          } catch (e) {
-            message.error(
-                'Warning: the value of ' +
-                  item.name +
-                  ' can`t be parsed into json. ' +
-                  e.message
+      case 'Save':
+        events.trigger('save' + name, self.currentFocusItem);
+        break;
+      case 'Rename':
+        events.trigger('rename' + name, self.currentFocusItem);
+        break;
+      case 'Delete':
+        events.trigger('delete' + name, self.currentFocusItem);
+        break;
+      case 'Rule':
+        events.trigger('createRules');
+        break;
+      case 'Key':
+        events.trigger('createValues');
+        break;
+      case 'ruleGroup':
+        events.trigger('createRuleGroup');
+        break;
+      case 'valueGroup':
+        events.trigger('createValueGroup');
+        break;
+      case 'Export':
+        events.trigger('export' + name);
+        break;
+      case 'Import':
+        events.trigger('import' + name, e);
+        break;
+      case 'Trash':
+        self.showRecycleBin(name);
+        break;
+      case 'Validate':
+        var item = self.currentFocusItem;
+        if (item) {
+          if (JSON_RE.test(item.value)) {
+            try {
+              JSON.parse(item.value);
+              message.success('成功解析.');
+            } catch (e) {
+              message.error(
+                '警告:' +
+                item.name +
+                ' 无法解析为json. ' +
+                e.message
               );
+            }
+          } else {
+            message.error('错误的JSON对象.');
           }
-        } else {
-          message.error('Bad JSON Object.');
         }
-      }
-      break;
-    case 'Format':
-      self.formatJson(self.currentFocusItem);
-      break;
-    case 'Help':
-      window.open(
+        break;
+      case 'Format':
+        self.formatJson(self.currentFocusItem);
+        break;
+      case 'Help':
+        window.open(
           'https://avwo.github.io/whistle/webui/' +
-            (self.props.name || 'values') +
-            '.html'
+          (self.props.name || 'values') +
+          '.html'
         );
-      break;
-    case 'Plugins':
-      var modal = self.props.modal;
-      iframes.fork(action, {
-        port: dataCenter.getPort(),
-        type: self.props.name === 'rules' ? 'rules' : 'values',
-        name: menuName,
-        list: modal && modal.getList(),
-        activeItem: self.currentFocusItem,
-        selectedItem: modal && modal.getActive()
-      });
-      break;
+        break;
+      case 'Plugins':
+        var modal = self.props.modal;
+        iframes.fork(action, {
+          port: dataCenter.getPort(),
+          type: self.props.name === 'rules' ? 'rules' : 'values',
+          name: menuName,
+          list: modal && modal.getList(),
+          activeItem: self.currentFocusItem,
+          selectedItem: modal && modal.getActive()
+        });
+        break;
     }
   },
   triggerChange: function (type) {
@@ -478,12 +509,12 @@ var List = React.createClass({
     if (isRules) {
       data.list = rulesCtxMenuList;
       data.list[1].disabled = disabled;
-      data.list[1].name = 'Save';
+      data.list[1].name = '保存';
       if (item && !item.changed) {
         if (dataCenter.isMutilEnv() && name !== 'Default') {
           data.list[1].disabled = true;
         } else {
-          data.list[1].name = item.selected ? 'Disable' : 'Enable';
+          data.list[1].name = item.selected ? '禁用' : '启用';
         }
       }
       if (item && item.isDefault) {
@@ -553,9 +584,9 @@ var List = React.createClass({
       <div className={'orient-vertical-box fill' + (props.hide ? ' hide' : '')}>
         {props.disabled ? (
           <div className="w-record-status">
-            All rules is disabled
+            所有规则都被禁用
             <button className="btn btn-primary" onClick={self.enableAllRules}>
-              Enable
+              开启
             </button>
           </div>
         ) : null}

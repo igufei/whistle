@@ -32,7 +32,7 @@ var FilterBtn = React.createClass({
         draggable="false"
       >
         <span className="glyphicon glyphicon-cog" />
-        Settings
+        设置
       </a>
     );
   }

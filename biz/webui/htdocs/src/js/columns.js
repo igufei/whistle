@@ -21,21 +21,21 @@ exports.setMinWidth = function (width) {
 function getDefaultColumns() {
   return [
     {
-      title: 'Date',
+      title: '日期',
       name: 'date',
       className: 'date',
       showTitle: true,
       width: 160
     },
     {
-      title: 'Result',
+      title: '状态码',
       name: 'result',
       className: 'result',
       selected: true,
       width: 65
     },
     {
-      title: 'Method',
+      title: '方法',
       name: 'method',
       className: 'method',
       showTitle: true,
@@ -43,21 +43,21 @@ function getDefaultColumns() {
       width: 75
     },
     {
-      title: 'Protocol',
+      title: '协议',
       name: 'protocol',
       className: 'protocol',
       selected: true,
       width: 95
     },
     {
-      title: 'ClientIP',
+      title: '客户端IP',
       name: 'clientIp',
       className: 'clientIp',
       showTitle: true,
       width: 110
     },
     {
-      title: 'ServerIP',
+      title: '服务器IP',
       name: 'hostIp',
       className: 'hostIp',
       selected: true,
@@ -65,19 +65,19 @@ function getDefaultColumns() {
       width: 110
     },
     {
-      title: 'ClientPort',
+      title: '客户端端口',
       name: 'clientPort',
       className: 'clientPort',
       width: 90
     },
     {
-      title: 'ServerPort',
+      title: '服务器端口',
       name: 'serverPort',
       className: 'serverPort',
       width: 90
     },
     {
-      title: 'Host',
+      title: '主机',
       name: 'hostname',
       className: 'hostname',
       selected: true,
@@ -85,7 +85,7 @@ function getDefaultColumns() {
       width: 150
     },
     {
-      title: 'URL',
+      title: '网址',
       name: 'path',
       className: 'path',
       selected: true,
@@ -93,7 +93,7 @@ function getDefaultColumns() {
       minWidth: 60
     },
     {
-      title: 'Type',
+      title: '类型',
       name: 'type',
       className: 'type',
       selected: true,
@@ -101,14 +101,14 @@ function getDefaultColumns() {
       width: 125
     },
     {
-      title: 'Body',
+      title: '正文',
       showTitle: true,
       name: 'body',
       className: 'body',
       width: 90
     },
     {
-      title: 'Encoding',
+      title: '编码',
       name: 'contentEncoding',
       className: 'contentEncoding',
       width: 90
@@ -120,39 +120,39 @@ function getDefaultColumns() {
       width: 70
     },
     {
-      title: 'Request',
+      title: '请求',
       name: 'request',
       className: 'request',
       width: 90
     },
     {
-      title: 'Response',
+      title: '响应',
       name: 'response',
       className: 'response',
       width: 90
     },
     {
-      title: 'Download',
+      title: '下载',
       name: 'download',
       className: 'download',
       width: 90
     },
     {
-      title: 'Time',
+      title: '耗时',
       name: 'time',
       className: 'time',
       selected: true,
       width: 70
     },
     {
-      title: 'Custom1',
+      title: '自定义1',
       name: 'custom1',
       className: 'custom1',
       showTitle: true,
       width: 120
     },
     {
-      title: 'Custom2',
+      title: '自定义2',
       name: 'custom2',
       className: 'custom2',
       showTitle: true,

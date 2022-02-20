@@ -53,7 +53,7 @@ function createModal(options, callback, gVarName) {
       <div className="modal-body"></div>
       <div className="modal-footer">
         <button type="button" className="btn btn-default" data-dismiss="modal">
-          Close
+          关闭
         </button>
       </div>
     </Dialog>,

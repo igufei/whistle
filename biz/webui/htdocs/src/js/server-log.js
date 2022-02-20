@@ -22,27 +22,27 @@ var ServerLog = React.createClass({
       levels: [
         {
           value: '',
-          text: 'All levels'
+          text: '全部'
         },
         {
           value: 'debug',
-          text: 'Debug'
+          text: '调试'
         },
         {
           value: 'info',
-          text: 'Info/Log'
+          text: '信息'
         },
         {
           value: 'warn',
-          text: 'Warn'
+          text: '警告'
         },
         {
           value: 'error',
-          text: 'Error'
+          text: '错误'
         },
         {
           value: 'fatal',
-          text: 'Fatal'
+          text: '致命'
         }
       ]
     };
@@ -220,10 +220,10 @@ var ServerLog = React.createClass({
     var form = new FormData(ReactDOM.findDOMNode(this.refs.importDataForm));
     var file = form.get('importData');
     if (!file || !/\.log$/i.test(file.name)) {
-      return win.alert('Only supports .log file.');
+      return win.alert('只支持 .log 文件.');
     }
     if (file.size > MAX_FILE_SIZE) {
-      return win.alert('The file size cannot exceed 2m.');
+      return win.alert('文件大小不能超过2m.');
     }
     util.readFileAsText(file, function (logs) {
       logs = util.parseLogs(logs);
@@ -271,7 +271,7 @@ var ServerLog = React.createClass({
           <DropDown onChange={this.changeLevel} options={state.levels} />
           <div className="w-textarea-bar">
             <a className="w-import" onClick={this.selectFile} draggable="false">
-              Import
+              导入
             </a>
             <a
               className={'w-download' + (disabled ? ' w-disabled' : '')}
@@ -279,7 +279,7 @@ var ServerLog = React.createClass({
               onClick={disabled ? undefined : this.showNameInput}
               draggable="false"
             >
-              Export
+              导出
             </a>
             <RecordBtn onClick={this.handleAction} />
             <a
@@ -287,7 +287,7 @@ var ServerLog = React.createClass({
               onClick={disabled ? undefined : this.clearLogs}
               draggable="false"
             >
-              Clear
+              清理
             </a>
             <div
               onMouseDown={this.preventBlur}
@@ -300,14 +300,14 @@ var ServerLog = React.createClass({
                 onBlur={this.hideNameInput}
                 type="text"
                 maxLength="64"
-                placeholder="Input the filename"
+                placeholder="请输入文件名称"
               />
               <button
                 type="button"
                 onClick={this.submit}
                 className="btn btn-primary"
               >
-                OK
+              好的
               </button>
             </div>
             <form

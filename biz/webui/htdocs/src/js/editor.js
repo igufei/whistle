@@ -426,7 +426,7 @@ var Editor = React.createClass({
     self.setMode(self.props.mode);
     var value = self.props.value;
     if (init && value && value.length > INIT_LENGTH) {
-      var elem = message.info('Loading...');
+      var elem = message.info('加载中...');
       self.timer = setTimeout(function () {
         elem.hide();
         self.timer = null;

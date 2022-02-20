@@ -101,7 +101,7 @@ var SyncDialog = React.createClass({
             className="btn btn-default"
             data-dismiss="modal"
           >
-            Close
+            关闭
           </button>
         </div>
         <KVDialog ref="kvDialog" />

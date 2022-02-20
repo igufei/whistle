@@ -281,14 +281,14 @@ exports.showSystemError = function (xhr) {
   var status = xhr.status;
   if (!status) {
     return win.alert(
-      'Please check the proxy settings or whether whistle has been started.'
+      '请检查代理设置或whistle是否已启动.'
     );
   }
   var msg = STATUS_CODES[status];
   if (msg) {
     return win.alert('[' + status + '] ' + msg + '.');
   }
-  win.alert('[' + status + '] Unknown error, try again later.');
+  win.alert('[' + status + '] 未知错误,请稍后再试.');
 };
 
 exports.getClasses = function getClasses(obj) {
@@ -1396,12 +1396,12 @@ function parseRawJson(str, quite) {
     if (json && typeof json === 'object') {
       return json;
     }
-    !quite && message.error('Error: not a json object.');
+    !quite && message.error('错误:不是一个正常的json对象.');
   } catch (e) {
     if ((json = evalJson(str))) {
       return json;
     }
-    !quite && message.error('Error: ' + e.message);
+    !quite && message.error('错误: ' + e.message);
   }
 }
 

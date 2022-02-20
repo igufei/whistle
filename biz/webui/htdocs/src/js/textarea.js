@@ -22,19 +22,19 @@ var Tips = React.createClass({
     if (data.isFrames) {
       return (
         <a className={className} onClick={showFrames}>
-          View in Frames
+          在框架里显示
         </a>
       );
     }
     if (data.isHttps) {
       return (
         <div className={className}>
-          <p>Tunnel</p>
+          <p>隧道</p>
           <a
             href="https://avwo.github.io/whistle/webui/https.html"
             target="_blank"
           >
-            Click here for more information
+            点击这里了解更多信息
           </a>
         </div>
       );
@@ -44,7 +44,7 @@ var Tips = React.createClass({
         <p>{data.message}</p>
         {data.url ? (
           <a href={data.url} target="_blank">
-            Open the URL in a new window
+            在新窗口中打开网址
           </a>
         ) : undefined}
       </div>
@@ -116,12 +116,12 @@ var Textarea = React.createClass({
       return;
     }
     if (!name) {
-      message.error('The key cannot be empty.');
+      message.error('密钥不能为空.');
       return;
     }
 
     if (/\s/.test(name)) {
-      message.error('The key cannot have spaces.');
+      message.error('密钥不能有空格.');
       return;
     }
     var handleSubmit = function (sure) {
@@ -143,7 +143,7 @@ var Textarea = React.createClass({
       return handleSubmit(true);
     }
     win.confirm(
-      'The key \'' + name + '\' already exists.\nDo you want to override it.',
+      '\'' + name + '\' 已经存在了。\n你想覆盖它吗?',
       handleSubmit
     );
   },
@@ -167,7 +167,7 @@ var Textarea = React.createClass({
         value.substring(0, MAX_LENGTH) +
         '...\r\n\r\n(' +
         exceed +
-        ' characters left, you can click on the ViewAll button in the upper right corner to view all)\r\n';
+        ' 在左侧，您可以单击右上角的[查看全部]按钮查看所有)\r\n';
     }
     var isHexView = this.props.isHexView;
     this.state.value = value;
@@ -182,7 +182,7 @@ var Textarea = React.createClass({
         <div className={'w-textarea-bar' + (value ? '' : ' hide')}>
           <CopyBtn value={this.props.value} />
           {isHexView ? (
-            <CopyBtn name="AsHex" value={util.getHexText(this.props.value)} />
+            <CopyBtn name="为Hex" value={util.getHexText(this.props.value)} />
           ) : undefined}
           <a
             className="w-download"
@@ -190,17 +190,17 @@ var Textarea = React.createClass({
             onClick={this.showNameInput}
             draggable="false"
           >
-            Download
+            下载
           </a>
           {showAddToValuesBtn ? (
             <a className="w-add" onClick={this.showNameInput} draggable="false">
-              +Key
+              添加Key
             </a>
           ) : (
             ''
           )}
           <a className="w-edit" onClick={this.edit} draggable="false">
-            ViewAll
+            查看全部
           </a>
           <div
             onMouseDown={this.preventBlur}
@@ -215,8 +215,8 @@ var Textarea = React.createClass({
               maxLength="64"
               placeholder={
                 this.state.showDownloadInput
-                  ? 'Input the filename'
-                  : 'Input the key'
+                  ? '请输入文件名称'
+                  : '请输入key'
               }
             />
             <button
@@ -224,7 +224,7 @@ var Textarea = React.createClass({
               onClick={this.submit}
               className="btn btn-primary"
             >
-              {this.state.showDownloadInput ? 'OK' : '+Key'}
+              {this.state.showDownloadInput ? '好的' : '添加Key'}
             </button>
           </div>
         </div>

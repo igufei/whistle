@@ -51,7 +51,7 @@ var Inspectors = React.createClass({
         }
       >
         <div className="box w-detail-inspectors-url" title={url}>
-          <label>Url</label>
+          <label>网址</label>
           <div className="fill">
             <ExpandCollapse text={url} />
           </div>
@@ -64,7 +64,7 @@ var Inspectors = React.createClass({
             }}
             className={self.getStyle('Request')}
           >
-            <span className="glyphicon glyphicon-arrow-right"></span>Request
+            <span className="glyphicon glyphicon-arrow-right"></span>请求
           </button>
           <button
             type="button"
@@ -73,7 +73,7 @@ var Inspectors = React.createClass({
             }}
             className={self.getStyle('Frames')}
           >
-            <span className="glyphicon glyphicon-menu-hamburger"></span>Frames
+            <span className="glyphicon glyphicon-menu-hamburger"></span>框架
           </button>
           <div className="fill w-custom-tabs">
             {tabs.map(function (tab) {

@@ -47,7 +47,7 @@ var KVDialog = React.createClass({
       );
     }
     win.confirm(
-      'Conflict with existing content, whether to continue to overwrite them?',
+      '与现有内容冲突,否继续覆盖?',
       function (sure) {
         sure &&
           events.trigger(self.isValues ? 'uploadValues' : 'uploadRules', data);
@@ -56,7 +56,7 @@ var KVDialog = React.createClass({
   },
   remove: function (item) {
     var self = this;
-    win.confirm('Are you sure to delete \'' + item.name + '\'.', function (sure) {
+    win.confirm('你确定要删除\'' + item.name + '\'吗?', function (sure) {
       if (sure) {
         var index = self.state.list.indexOf(item);
         if (index !== -1) {
@@ -78,14 +78,14 @@ var KVDialog = React.createClass({
           </button>
           <table className="table">
             <thead>
-              <th className="w-kv-name">Name</th>
-              <th className="w-kv-operation">Operation</th>
+              <th className="w-kv-name">名称</th>
+              <th className="w-kv-operation">操作</th>
             </thead>
             <tbody>
               {noData ? (
                 <tr>
                   <td colSpan="2" className="w-empty">
-                    Empty
+                    空的
                   </td>
                 </tr>
               ) : (
@@ -99,7 +99,7 @@ var KVDialog = React.createClass({
                       </th>
                       <td className="w-kv-operation">
                         <a title={item.value} onClick={self.viewContent}>
-                          Content
+                          内容
                         </a>
                         <a
                           data-name={item.name}
@@ -107,7 +107,7 @@ var KVDialog = React.createClass({
                             self.remove(item);
                           }}
                         >
-                          Delete
+                          删除
                         </a>
                         <strong>{item.isConflict ? '[Conflict]' : ''}</strong>
                       </td>
@@ -126,14 +126,14 @@ var KVDialog = React.createClass({
             onClick={this.confirm}
             data-dismiss="modal"
           >
-            Confirm
+            确认
           </button>
           <button
             type="button"
             className="btn btn-default"
             data-dismiss="modal"
           >
-            Close
+            关闭
           </button>
         </div>
       </Dialog>

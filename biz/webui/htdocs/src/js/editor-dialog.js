@@ -27,7 +27,7 @@ var EditorDialog = React.createClass({
     return (
       <Dialog ref="editorDialog" wstyle="w-editor-dialog">
         <div className="modal-header">
-          Edit the copied text
+          编辑复制的文本
           <button type="button" className="close" data-dismiss="modal">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -43,14 +43,14 @@ var EditorDialog = React.createClass({
             data-clipboard-text={state.value}
             disabled={!value}
           >
-            Copy
+            复制
           </button>
           <button
             type="button"
             className="btn btn-default"
             data-dismiss="modal"
           >
-            Close
+            关闭
           </button>
         </div>
       </Dialog>

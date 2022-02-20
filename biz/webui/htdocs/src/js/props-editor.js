@@ -72,7 +72,7 @@ var PropsEditor = React.createClass({
       return;
     }
     if (Object.keys(this.state.modal || '').length >= MAX_COUNT) {
-      return message.error('The number cannot exceed ' + MAX_COUNT + '.');
+      return message.error('这个数字不能超过 ' + MAX_COUNT + '.');
     }
     this.setState({ data: '' });
     this.showDialog();
@@ -91,7 +91,7 @@ var PropsEditor = React.createClass({
     var name = nameInput.value.trim();
     if (!name) {
       nameInput.focus();
-      return message.error('The name cannot be empty.');
+      return message.error('名称不能为空.');
     }
     var valueInput = ReactDOM.findDOMNode(this.refs.valueInput);
     var value = valueInput.value.trim();
@@ -122,7 +122,7 @@ var PropsEditor = React.createClass({
     var name = nameInput.value.trim();
     if (!name) {
       nameInput.focus();
-      return message.error('The name cannot be empty.');
+      return message.error('名称不能为空.');
     }
     var valueInput = ReactDOM.findDOMNode(this.refs.valueInput);
     var value = valueInput.value.trim();
@@ -183,7 +183,7 @@ var PropsEditor = React.createClass({
     var opName = self.props.isHeader ? 'header' : 'field';
     var item = self.state.modal[name];
     win.confirm(
-      'Are you sure to delete this ' + opName + ' \'' + item.name + '\'.',
+      '你确定要删除这个 ' + opName + ' \'' + item.name + '\'吗?',
       function (sure) {
         if (sure) {
           delete self.state.modal[name];
@@ -230,7 +230,7 @@ var PropsEditor = React.createClass({
     var form = new FormData(ReactDOM.findDOMNode(this.refs.readLocalFileForm));
     var file = form.get('localFile');
     if (file.size > MAX_FILE_SIZE) {
-      return win.alert('The size of all files cannot exceed 20m.');
+      return win.alert('所有文件的大小不能超过20m.');
     }
     var modal = this.state.modal || '';
     var size = file.size;
@@ -238,7 +238,7 @@ var PropsEditor = React.createClass({
       size += modal[key].size;
     });
     if (size > MAX_FILE_SIZE) {
-      return win.alert('The size of all files cannot exceed 20m.');
+      return win.alert('所有文件的大小不能超过20m.');
     }
     var self = this;
     self.reading = true;
@@ -278,7 +278,7 @@ var PropsEditor = React.createClass({
     var isHeader = this.props.isHeader;
     var allowUploadFile = this.props.allowUploadFile;
     var data = this.state.data || '';
-    var btnText = (data ? 'Modify' : 'Add') + (isHeader ? ' header' : ' field');
+    var btnText = (data ? '修改' : '添加') + (isHeader ? '标头' : '字段');
 
     return (
       <div
@@ -341,7 +341,7 @@ var PropsEditor = React.createClass({
               (this.props.isHeader ? ' w-add-header' : '')
             }
           >
-            {this.props.isHeader ? 'Add header' : 'Add field'}
+            {this.props.isHeader ? '添加标头' : '添加字段'}
           </button>
         )}
         <Dialog ref="composerDialog" wstyle="w-composer-dialog">
@@ -350,16 +350,16 @@ var PropsEditor = React.createClass({
               <span aria-hidden="true">&times;</span>
             </button>
             <label>
-              Name:
+              名称:
               <input
                 ref="name"
-                placeholder="Input the name"
+                placeholder="请输入名称"
                 className="form-control"
                 maxLength="128"
               />
             </label>
             <div>
-              Value:
+              值:
               <div
                 className={
                   allowUploadFile
@@ -387,14 +387,14 @@ var PropsEditor = React.createClass({
                 <textarea
                   ref="valueInput"
                   maxLength={MAX_VALUE_LEN}
-                  placeholder="Input the value"
+                  placeholder="请输入值"
                   className={'form-control' + (filename ? ' hide' : '')}
                 />
                 <button
                   onClick={this.onUpload}
                   className={'btn btn-primary' + (filename ? ' hide' : '')}
                 >
-                  Upload file
+                  上传文件
                 </button>
               </div>
             </div>
@@ -412,7 +412,7 @@ var PropsEditor = React.createClass({
               className="btn btn-default"
               data-dismiss="modal"
             >
-              Cancel
+              取消
             </button>
           </div>
         </Dialog>

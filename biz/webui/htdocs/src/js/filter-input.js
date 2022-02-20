@@ -164,7 +164,7 @@ var FilterInput = React.createClass({
   },
   clear: function () {
     var self = this;
-    win.confirm('Confirm to clear history?', function (sure) {
+    win.confirm('确认清除历史记录?', function (sure) {
       if (sure) {
         storage.set(self.props.hintKey, '');
         self.allHintList = [];
@@ -221,7 +221,7 @@ var FilterInput = React.createClass({
           style={{ background: filterText.trim() ? '#000' : undefined }}
           className="w-filter-input"
           maxLength={MAX_LEN}
-          placeholder="type filter text"
+          placeholder="输入筛选文本"
         />
         <button
           onMouseDown={util.preventBlur}

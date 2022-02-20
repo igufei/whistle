@@ -38,15 +38,15 @@ var ResDetail = React.createClass({
       initedRaw: false,
       initPlugins: false,
       btns: [
-        { name: 'Headers' },
-        { name: 'Preview' },
-        { name: 'TextView', display: 'Body' },
-        { name: 'JSONView' },
-        { name: 'HexView' },
-        { name: 'Cookies' },
-        { name: 'Trailers' },
-        { name: 'Raw' },
-        { name: 'Plugins', hide: true }
+        { name: '标头', key: 'Headers' },
+        { name: '预览', key: 'Preview' },
+        { name: '查看文本', key: 'TextView', display: '正文' },
+        { name: '查看JSON', key: 'JSONView' },
+        { name: '查看Hex', key: 'HexView' },
+        { name: 'Cookies', key: 'Cookies' },
+        { name: '预告', key: 'Trailers' },
+        { name: '查看源', key: 'Raw' },
+        { name: '插件', key: 'Plugins', hide: true }
       ]
     };
   },
@@ -67,7 +67,7 @@ var ResDetail = React.createClass({
   selectBtn: function (btn) {
     btn.active = true;
     this.state.btn = btn;
-    this.state['inited' + btn.name] = true;
+    this.state['inited' + btn.key] = true;
   },
   render: function () {
     var state = this.state;
@@ -77,7 +77,7 @@ var ResDetail = React.createClass({
       btn = btns[0];
       this.selectBtn(btn);
     }
-    var name = btn && btn.name;
+    var name = btn && btn.key;
     var modal = this.props.modal;
     var res,
       rawHeaders,
@@ -157,7 +157,7 @@ var ResDetail = React.createClass({
       var imgSrc, data, isJson;
       var isText = true;
       var status = res.statusCode;
-      var showImg = name === btns[1].name;
+      var showImg = name === btns[1].key;
       if (status != null) {
         headersStr = util.objectToString(headers, res.rawHeaderNames);
         trailerStr = trailers
@@ -208,10 +208,10 @@ var ResDetail = React.createClass({
       ) {
         tips = { url: modal.url };
         if (res.size < 5120) {
-          tips.message = 'No response body data';
+          tips.message = '无响应数据';
         } else {
-          raw += '(Response data too large to show)';
-          tips.message = 'Response data too large to show';
+          raw += '(响应数据太大，无法显示)';
+          tips.message = '响应数据太大，无法显示';
         }
       }
       if (trailerStr) {
@@ -238,7 +238,7 @@ var ResDetail = React.createClass({
     var len = this.props.inComposer ? 0 : tabs.length;
     pluginsTab.hide = !len;
     if (len && len === 1) {
-      pluginsTab.display = pluginsTab.title = tabs[0].name;
+      pluginsTab.display = pluginsTab.title = tabs[0].key;
       pluginsTab.className = 'w-detail-custom-tab';
     } else {
       pluginsTab.display = undefined;
@@ -257,7 +257,7 @@ var ResDetail = React.createClass({
           <div
             className={
               'fill w-detail-response-headers' +
-              (name == btns[0].name ? '' : ' hide')
+              (name == btns[0].key ? '' : ' hide')
             }
           >
             <Properties modal={rawHeaders || headers} enableViewSource="1" />
@@ -273,14 +273,14 @@ var ResDetail = React.createClass({
             base64={base64}
             value={body}
             className="fill w-detail-response-textview"
-            hide={name != btns[2].name}
+            hide={name != btns[2].key}
           />
         ) : undefined}
         {state.initedJSONView ? (
           <JSONViewer
             defaultName={defaultName}
             data={json}
-            hide={name != btns[3].name}
+            hide={name != btns[3].key}
           />
         ) : undefined}
         {state.initedHexView ? (
@@ -290,14 +290,14 @@ var ResDetail = React.createClass({
             base64={base64}
             value={bin}
             className="fill n-monospace w-detail-response-hex"
-            hide={name != btns[4].name}
+            hide={name != btns[4].key}
           />
         ) : undefined}
         {state.initedCookies ? (
           <div
             className={
               'fill w-detail-response-cookies' +
-              (name == btns[5].name ? '' : ' hide')
+              (name == btns[5].key ? '' : ' hide')
             }
           >
             {cookies && cookies.length ? (
@@ -309,7 +309,7 @@ var ResDetail = React.createClass({
           <div
             className={
               'fill w-detail-response-headers' +
-              (name == btns[6].name ? '' : ' hide')
+              (name == btns[6].key ? '' : ' hide')
             }
           >
             <Properties modal={rawTrailers || trailers} enableViewSource="1" />
@@ -322,13 +322,13 @@ var ResDetail = React.createClass({
             headers={headersStr}
             base64={base64}
             className="fill w-detail-response-raw"
-            hide={name != btns[7].name}
+            hide={name != btns[7].key}
           />
         ) : undefined}
         {state.initedPlugins ? (
           <PluginsTabs
             tabs={tabs}
-            hide={name != pluginsTab.name || pluginsTab.hide}
+            hide={name != pluginsTab.key || pluginsTab.hide}
           />
         ) : undefined}
       </div>

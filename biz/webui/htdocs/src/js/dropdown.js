@@ -102,7 +102,7 @@ var DropDown = React.createClass({
           {help ? (
             <li style={{ padding: 0 }}>
               <a href={help} target="_blank">
-                Help
+                帮助
               </a>
             </li>
           ) : undefined}

@@ -56,7 +56,7 @@ function getBridge() {
         return handleImport(true);
       }
       mockWin.confirm(
-        'Conflict with existing content, whether to continue to overwrite them?',
+        '与现有内容冲突,是否继续覆盖?',
         handleImport
       );
     },
@@ -78,7 +78,7 @@ function getBridge() {
         return handleImport(true);
       }
       mockWin.confirm(
-        'Conflict with existing content, whether to continue to overwrite them?',
+        '与现有内容冲突,是否继续覆盖?',
         handleImport
       );
     }

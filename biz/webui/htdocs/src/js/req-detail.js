@@ -12,14 +12,14 @@ var PluginsTabs = require('./plugins-tabs');
 var events = require('./events');
 
 var BTNS = [
-  { name: 'Headers' },
-  { name: 'WebForms' },
-  { name: 'TextView', display: 'Body' },
-  { name: 'JSONView' },
-  { name: 'HexView' },
-  { name: 'Cookies' },
-  { name: 'Raw' },
-  { name: 'Plugins', hide: true }
+  { name: '标头', key: 'Headers'},
+  { name: '表单', key: 'WebForms' },
+  { name: '查看文本', key: 'TextView', display: '正文' },
+  { name: '查看JSON', key: 'JSONView' },
+  { name: '查看Hex', key: 'HexView'  },
+  { name: 'Cookies', key: 'Cookies' },
+  { name: '查看源', key: 'Raw' },
+  { name: '插件', key: 'Plugins',  hide: true }
 ];
 
 var ReqDetail = React.createClass({
@@ -52,7 +52,7 @@ var ReqDetail = React.createClass({
   selectBtn: function (btn) {
     btn.active = true;
     this.state.btn = btn;
-    this.state['inited' + btn.name] = true;
+    this.state['inited' + btn.key] = true;
   },
   render: function () {
     var state = this.state;
@@ -61,7 +61,7 @@ var ReqDetail = React.createClass({
       btn = BTNS[0];
       this.selectBtn(btn);
     }
-    var name = btn && btn.name;
+    var name = btn && btn.key;
     var modal = this.props.modal;
     var req,
       headers,
@@ -138,7 +138,7 @@ var ReqDetail = React.createClass({
         !/^ws/.test(modal.url)
       ) {
         if (req.size < 5120) {
-          tips = { message: 'No request body data' };
+          tips = { message: '没有请求正文数据' };
         } else {
           raw += '(Request data too large to show)';
           tips = { message: 'Request data too large to show' };
@@ -156,7 +156,7 @@ var ReqDetail = React.createClass({
     pluginsTab.className = undefined;
     pluginsTab.hide = !len;
     if (len && len === 1) {
-      pluginsTab.display = pluginsTab.title = tabs[0].name;
+      pluginsTab.display = pluginsTab.title = tabs[0].key;
       pluginsTab.className = 'w-detail-custom-tab w-req';
     } else {
       pluginsTab.display = undefined;
@@ -176,7 +176,7 @@ var ReqDetail = React.createClass({
           <div
             className={
               'fill w-detail-request-headers' +
-              (name == BTNS[0].name ? '' : ' hide')
+              (name == BTNS[0].key ? '' : ' hide')
             }
           >
             <Properties modal={rawHeaders || headers} enableViewSource="1" />
@@ -190,17 +190,17 @@ var ReqDetail = React.createClass({
             hideRight={!form}
             className={
               'w-detail-request-webforms' +
-              (name == BTNS[1].name ? '' : ' hide')
+              (name == BTNS[1].key ? '' : ' hide')
             }
           >
             <div className="fill orient-vertical-box">
-              <div className="w-detail-webforms-title">Query</div>
+              <div className="w-detail-webforms-title">查询字符串</div>
               <div className="fill orient-vertical-box w-detail-request-query">
                 <Properties modal={query} enableViewSource="1" />
               </div>
             </div>
             <div className="fill orient-vertical-box">
-              <div className="w-detail-webforms-title">Body</div>
+              <div className="w-detail-webforms-title">正文</div>
               <div className="fill orient-vertical-box w-detail-request-form">
                 <Properties modal={form} enableViewSource="1" />
               </div>
@@ -216,14 +216,14 @@ var ReqDetail = React.createClass({
             base64={base64}
             value={body}
             className="fill w-detail-request-textview"
-            hide={name != BTNS[2].name}
+            hide={name != BTNS[2].key}
           />
         ) : undefined}
         {state.initedJSONView ? (
           <JSONViewer
             defaultName={defaultName}
             data={json}
-            hide={name != BTNS[3].name}
+            hide={name != BTNS[3].key}
           />
         ) : undefined}
         {state.initedHexView ? (
@@ -233,14 +233,14 @@ var ReqDetail = React.createClass({
             base64={base64}
             value={bin}
             className="fill n-monospace w-detail-request-hex"
-            hide={name != BTNS[4].name}
+            hide={name != BTNS[4].key}
           />
         ) : undefined}
         {state.initedCookies ? (
           <div
             className={
               'fill w-detail-request-cookies' +
-              (name == BTNS[5].name ? '' : ' hide')
+              (name == BTNS[5].key ? '' : ' hide')
             }
           >
             <Properties modal={cookies} enableViewSource="1" />
@@ -253,13 +253,13 @@ var ReqDetail = React.createClass({
             headers={headersStr}
             base64={base64}
             className="fill w-detail-request-raw"
-            hide={name != BTNS[6].name}
+            hide={name != BTNS[6].key}
           />
         ) : undefined}
         {state.initedPlugins ? (
           <PluginsTabs
             tabs={tabs}
-            hide={name != pluginsTab.name || pluginsTab.hide}
+            hide={name != pluginsTab.key || pluginsTab.hide}
           />
         ) : undefined}
       </div>

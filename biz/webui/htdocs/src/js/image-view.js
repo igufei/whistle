@@ -16,7 +16,7 @@ var ImageView = React.createClass({
       <div className={'fill w-image-view' + (props.hide ? ' hide' : '')}>
         {props.imgSrc ? <img src={props.imgSrc} /> : undefined}
         {props.data ? (
-          <a onClick={this.preview}>Click here to preview page in new window</a>
+          <a onClick={this.preview}>单击此处在新窗口中预览页面</a>
         ) : undefined}
       </div>
     );

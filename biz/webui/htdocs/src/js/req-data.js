@@ -34,92 +34,92 @@ var NOT_BOLD_RULES = {
 };
 var contextMenuList = [
   {
-    name: 'Open',
+    name: '打开',
     list: [
-      { name: 'Overview' },
-      { name: 'Inspectors' },
-      { name: 'Composer' },
-      { name: 'Timeline' },
-      { name: 'New Tab' },
-      { name: 'QR Code' },
-      { name: 'Preview' },
-      { name: 'Source' },
-      { name: 'Tree View', action: 'toggleView' }
+      { name: '概述' },
+      { name: '检查器' },
+      { name: '模拟请求' },
+      { name: '时间线' },
+      { name: '新标签页' },
+      { name: '二维码' },
+      { name: '检查员' },
+      { name: '源代码' },
+      { name: '树型显示', action: 'toggleView' }
     ]
   },
   {
-    name: 'Copy',
+    name: '复制',
     shiftToEdit: true,
     list: [
-      { name: 'Host' },
-      { name: 'Path' },
-      { name: 'URL' },
-      { name: 'Full URL' },
-      { name: 'As CURL' },
-      { name: 'Client IP' },
-      { name: 'Server IP' },
-      { name: 'Req Headers' },
-      { name: 'Res Headers' },
+      { name: '主机名' },
+      { name: '路径' },
+      { name: '网址' },
+      { name: '完整网址' },
+      { name: '为cURL' },
+      { name: '客户端IP' },
+      { name: '服务器IP' },
+      { name: '请求标头' },
+      { name: '响应标头' },
       { name: 'Cookie' }
     ]
   },
   {
-    name: '+File',
+    name: '添加',
     list: [
-      { name: 'Req Body' },
-      { name: 'Res Body' },
-      { name: 'Req Raw' },
-      { name: 'Res Raw' }
+      { name: '请求Body' },
+      { name: '响应Body' },
+      { name: '请求Raw' },
+      { name: '响应Raw' }
     ]
   },
   {
-    name: 'Remove',
+    name: '移除',
     list: [
-      { name: 'All' },
-      { name: 'This' },
-      { name: 'Others' },
-      { name: 'Selected' },
-      { name: 'Unselected' },
-      { name: 'Unmarked' },
-      { name: 'All Such Host', action: 'removeAllSuchHost' },
-      { name: 'All Such URL', action: 'removeAllSuchURL' }
+      { name: '全部' },
+      { name: '当前' },
+      { name: '其它' },
+      { name: '选中' },
+      { name: '未选中' },
+      { name: '未标记' },
+      { name: '所有此主机名的来源', action: 'removeAllSuchHost' },
+      { name: '所有此网址的来源', action: 'removeAllSuchURL' }
     ]
   },
   {
-    name: 'Filter',
+    name: '过滤',
     list: [
-      { name: 'Edit' },
-      { name: 'Exclude All Such Host', action: 'excludeHost' },
-      { name: 'Exclude All Such URL', action: 'excludeUrl' }
+      { name: '编辑' },
+      { name: '所有此主机名的来源', action: 'excludeHost' },
+      { name: '所有此网址的来源', action: 'excludeUrl' }
     ]
   },
   {
-    name: 'Actions',
+    name: '操作',
     list: [
-      { name: 'Abort' },
-      { name: 'Replay' },
-      { name: 'Compose' },
-      { name: 'Mark' },
-      { name: 'Unmark' }
+      { name: '中止' },
+      { name: '重播' },
+      { name: '模拟请求' },
+      { name: '标记' },
+      { name: '取消标记' }
     ]
   },
   {
-    name: 'Tree',
+    name: '树型',
     list: [
-      { name: 'Expand' },
-      { name: 'Collapse' },
-      { name: 'Expand All' },
-      { name: 'Collapse All' }
+      { name: '扩展' },
+      { name: '收缩' },
+      { name: '全部扩展' },
+      { name: '全部收缩' }
     ]
   },
-  { name: 'Import' },
-  { name: 'Export' },
+  { name: '导入' },
+  { name: '导出' },
   {
-    name: 'Others',
+    name: '其它',
     action: 'Plugins',
     list: []
   },
-  { name: 'Help', sep: true }
+  { name: '帮助', sep: true }
 ];
 
 function stopPropagation(e) {
@@ -774,39 +774,39 @@ var ReqData = React.createClass({
     var curUrl = (item && item.url) || (treeId && treeId + '/');
     self.currentFocusItem = null;
     switch (parentAction || action) {
-    case 'New Tab':
+    case '新标签页':
       curUrl && window.open(curUrl);
       break;
-    case 'QR Code':
+    case '二维码':
       self.refs.qrcodeDialog.show(curUrl);
       break;
-    case 'Preview':
+      case '预览':
       util.openPreview(item);
       break;
-    case 'Source':
+    case '源代码':
       util.openEditor(JSON.stringify(item, null, '  '));
       break;
     case 'toggleView':
       events.trigger('switchTreeView');
       break;
-    case 'Overview':
+      case '概述':
       self.triggerActiveItem(item);
       events.trigger('showOverview');
       break;
-    case 'Inspectors':
+      case '检查器':
       self.triggerActiveItem(item);
       events.trigger('showInspectors');
       break;
-    case 'Timeline':
+    case '时间线':
       self.triggerActiveItem(item);
       events.trigger('showTimeline');
       break;
     case 'Composer':
-    case 'Compose':
+    case '模拟请求':
       events.trigger('composer', item);
       break;
-    case 'Mark':
-    case 'Unmark':
+    case '标记':
+    case '取消标记':
       var list = getFocusItemList(item) || (modal && modal.getSelectedList());
       if (list) {
         var isMark = action === 'Mark';
@@ -816,10 +816,10 @@ var ReqData = React.createClass({
       }
       this.setState({});
       break;
-    case 'Replay':
+    case '重播':
       events.trigger('replaySessions', [item, e.shiftKey]);
       break;
-    case 'Export':
+    case '导出':
       if (self.treeTarget && !self.isTreeLeafNode) {
         events.trigger('exportSessions', [
           modal.getListByPath(self.treeTarget)
@@ -828,24 +828,24 @@ var ReqData = React.createClass({
         events.trigger('exportSessions', item);
       }
       break;
-    case 'Abort':
+    case '中止':
       events.trigger('abortRequest', item);
       break;
-    case 'Req Body':
+    case '请求Body':
       events.trigger('showFilenameInput', {
         title: 'Set the filename of request body',
         base64: item.req.base64,
         name: getFilename(item, 'req_body')
       });
       break;
-    case 'Res Body':
+    case '响应Body':
       events.trigger('showFilenameInput', {
         title: 'Set the filename of response body',
         base64: item.res.base64,
         name: getFilename(item, 'res_body')
       });
       break;
-    case 'Req Raw':
+    case '请求Raw':
       var req = item.req;
       var realUrl = item.realUrl;
       if (!realUrl || !/^(?:http|wss)s?:\/\//.test(realUrl)) {
@@ -866,7 +866,7 @@ var ReqData = React.createClass({
         name: getFilename(item, 'req_raw')
       });
       break;
-    case 'Res Raw':
+    case '响应Raw':
       var res = item.res;
       var statusLine = [
         'HTTP/' + (item.req.httpVersion || '1.1'),
@@ -883,10 +883,10 @@ var ReqData = React.createClass({
         name: getFilename(item, 'res_raw')
       });
       break;
-    case 'Import':
+    case '导入':
       events.trigger('importSessions', e);
       break;
-    case 'Edit':
+    case '编辑':
       events.trigger('filterSessions', e);
       break;
     case 'removeAllSuchHost':
@@ -901,36 +901,36 @@ var ReqData = React.createClass({
     case 'excludeUrl':
       curUrl && self.removeAllSuchURL(item || curUrl);
       break;
-    case 'This':
+    case '当前':
       if (treeId) {
         self.removeTreeNode(treeId);
       } else {
         events.trigger('removeIt', item);
       }
       break;
-    case 'All':
+    case '全部':
       events.trigger('clearAll');
       break;
-    case 'Others':
+    case '其它':
       if (treeId) {
         self.removeTreeNode(treeId, true);
       } else {
         events.trigger('removeOthers', item);
       }
       break;
-    case 'Selected':
+    case '选中':
       events.trigger('removeSelected');
       break;
-    case 'Unselected':
+    case '未选中':
       events.trigger('removeUnselected');
       break;
-    case 'Unmarked':
+    case '取消标记':
       events.trigger('removeUnmarked');
       break;
-    case 'Help':
+    case '帮助':
       window.open('https://avwo.github.io/whistle/webui/network.html');
       break;
-    case 'Plugins':
+    case '插件':
       iframes.fork(action, {
         port: dataCenter.getPort(),
         type: 'network',
@@ -939,14 +939,14 @@ var ReqData = React.createClass({
         selectedList: self.props.modal.getSelectedList()
       });
       break;
-    case 'Expand':
-    case 'Collapse':
+    case '扩展':
+    case '收缩':
       self.toggleNode(treeId);
       break;
-    case 'Expand All':
+    case '全部扩展':
       self.expandAll(treeId);
       break;
-    case 'Collapse All':
+    case '全部收缩':
       self.collapseAll(treeId);
       break;
     }
@@ -979,9 +979,9 @@ var ReqData = React.createClass({
     list0[5].disabled = clickBlank;
     list0[7].disabled = disabled;
     if (modal.isTreeView) {
-      list0[8].name = 'List View';
+      list0[8].name = '列表显示';
     } else {
-      list0[8].name = 'Tree View';
+      list0[8].name = '树型显示';
     }
     contextMenuList[1].disabled = disabled && !treeId;
     var treeUrl = treeId ? treeId + '/' : '';
@@ -989,44 +989,44 @@ var ReqData = React.createClass({
     contextMenuList[1].list.forEach(function (menu) {
       menu.disabled = disabled;
       switch (menu.name) {
-      case 'URL':
+      case '网址':
         menu.copyText = util.getUrl(
             (item && item.url.replace(/[?#].*$/, '')) || treeUrl
           );
         menu.disabled = isTreeNode;
         break;
-      case 'Host':
+      case '主机名':
         menu.copyText =
             (item && (item.isHttps ? item.path : item.hostname)) ||
             util.getHost(treeUrl);
         menu.disabled = isTreeNode;
         break;
-      case 'Path':
+      case '路径':
         menu.copyText = (item && item.path) || util.getPath(treeUrl);
         menu.disabled = isTreeNode;
         break;
-      case 'Full URL':
+      case '完整网址':
         menu.copyText = util.getUrl((item && item.url) || treeUrl);
         menu.disabled = isTreeNode;
         break;
-      case 'As CURL':
+      case '为cURL':
         menu.copyText = util.asCURL(item);
         break;
-      case 'Client IP':
+      case '客户端IP':
         menu.copyText = item && item.clientIp;
         break;
-      case 'Server IP':
+      case '服务器IP':
         var serverIp = item && util.getServerIp(item);
         menu.disabled = !serverIp;
         menu.copyText = serverIp;
         break;
-      case 'Req Headers':
+      case '请求标头':
         menu.copyText =
             item &&
             util.objectToString(item.req.rawHeaders || item.req.headers);
         menu.disabled = !menu.copyText;
         break;
-      case 'Res Headers':
+      case '响应标头':
         menu.copyText =
             item &&
             util.objectToString(item.res.rawHeaders || item.res.headers);
@@ -1382,9 +1382,9 @@ var ReqData = React.createClass({
         >
           {record ? (
             <div className="w-record-status">
-              {record === 'stop' ? 'Recording stopped' : 'Recording paused'}
+              {record === 'stop' ? '记录已停止' : '记录已暂停'}
               <button className="btn btn-primary" onClick={self.enableRecord}>
-                Enable
+                开启
               </button>
             </div>
           ) : null}

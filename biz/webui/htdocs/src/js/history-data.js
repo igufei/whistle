@@ -39,11 +39,11 @@ var HistoryData = React.createClass({
           <table className="table">
             <thead>
               <th className="w-composer-history-order">#</th>
-              <th className="w-composer-history-date">Date</th>
-              <th className="w-composer-history-method">Method</th>
-              <th className="w-composer-history-url">URL</th>
-              <th className="w-composer-history-body">Body</th>
-              <th className="w-composer-history-operation">Operation</th>
+              <th className="w-composer-history-date">日期</th>
+              <th className="w-composer-history-method">方法</th>
+              <th className="w-composer-history-url">网址</th>
+              <th className="w-composer-history-body">正文</th>
+              <th className="w-composer-history-operation">操作</th>
             </thead>
             <tbody>
               {data.map(function (item, i) {

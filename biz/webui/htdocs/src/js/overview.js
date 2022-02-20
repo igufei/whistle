@@ -11,26 +11,26 @@ var dataCenter = require('./data-center');
 var getHelpUrl = require('./protocols').getHelpUrl;
 
 var OVERVIEW = [
-  'Url',
-  'Final Url',
-  'Method',
-  'Http Version',
-  'Status Code',
-  'Status Message',
-  'Client IP',
-  'Client Port',
-  'Client ID',
-  'Server IP',
-  'Server Port',
-  'Request Body',
-  'Response Body',
-  'Content Encoding',
-  'Start Date',
-  'DNS Lookup',
-  'Request Sent',
-  'Response Headers',
-  'Content Loaded',
-  'Total'
+  '网址',
+  '最终网址',
+  '方式',
+  'Http版本',
+  '状态码',
+  '状态消息',
+  '客户端IP',
+  '服务器Port',
+  '客户端ID',
+  '服务器IP',
+  '服务器端口',
+  '请求Body',
+  '响应Body',
+  '内容编码',
+  '开始日期',
+  'DNS解析耗时',
+  '发送请求耗时',
+  '响应耗时',
+  '内容加载耗时',
+  '全部耗时'
 ];
 var OVERVIEW_PROPS = [
   'url',
@@ -366,14 +366,14 @@ var Overview = React.createClass({
           <a href="https://avwo.github.io/whistle/rules/" target="_blank">
             <span className="glyphicon glyphicon-question-sign"></span>
           </a>
-          All Rules:
+          全部规则:
           <label>
             <input
               checked={showOnlyMatchRules}
               onChange={this.showOnlyMatchRules}
               type="checkbox"
             />
-            Only show matching rules
+            只显示匹配规则
           </label>
         </p>
         <Properties

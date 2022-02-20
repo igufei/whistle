@@ -47,7 +47,7 @@ var DetailDialog = React.createClass({
             className="btn btn-default"
             data-dismiss="modal"
           >
-            Close
+            关闭
           </button>
         </div>
       </Dialog>

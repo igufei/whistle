@@ -64,7 +64,7 @@ var RecycleBinDialog = React.createClass({
     }
     if (data.ec === 3) {
       var self = this;
-      message.error('The file does not exist.');
+      message.error('该文件不存在.');
       dataCenter[this.state.name.toLowerCase()].recycleList(function (
         result,
         xhr
@@ -89,7 +89,7 @@ var RecycleBinDialog = React.createClass({
           return;
         }
         if (!data.data) {
-          return message.warn('No content.');
+          return message.warn('没有内容.');
         }
         util.openEditor(data.data);
       }
@@ -113,7 +113,7 @@ var RecycleBinDialog = React.createClass({
     var origName = decode(name.substring(name.indexOf('.') + 1));
     var self = this;
     win.confirm(
-      'Are you sure to delete \'' + origName + '\' completely.',
+      '你确定要彻底删除 \'' + origName + '\' 吗?',
       function (sure) {
         if (sure) {
           dataCenter[this.state.name.toLowerCase()].recycleRemove(
@@ -147,9 +147,9 @@ var RecycleBinDialog = React.createClass({
           <table className="table">
             <thead>
               <th className="w-files-order">#</th>
-              <th className="w-files-date">Date</th>
-              <th className="w-files-path">Filename</th>
-              <th className="w-files-operation">Operation</th>
+              <th className="w-files-date">日期</th>
+              <th className="w-files-path">文件名</th>
+              <th className="w-files-operation">操作</th>
             </thead>
             <tbody>
               {list.length ? (
@@ -163,17 +163,17 @@ var RecycleBinDialog = React.createClass({
                       </td>
                       <td className="w-files-operation">
                         <a data-name={item.name} onClick={self.view}>
-                          View
+                          查看
                         </a>
                         <a
                           onClick={function () {
                             self.recover(item);
                           }}
                         >
-                          Restore
+                          恢复
                         </a>
                         <a data-name={item.name} onClick={self.remove}>
-                          Delete
+                          删除
                         </a>
                       </td>
                     </tr>
@@ -195,7 +195,7 @@ var RecycleBinDialog = React.createClass({
             className="btn btn-default"
             data-dismiss="modal"
           >
-            Close
+            关闭
           </button>
         </div>
       </Dialog>

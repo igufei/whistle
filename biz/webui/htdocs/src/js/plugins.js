@@ -166,7 +166,7 @@ var Home = React.createClass({
     if (pendingEnable || !data.disabledAllPlugins) {
       return;
     }
-    win.confirm('Do you want to turn on Plugins?', function (sure) {
+    win.confirm('你想启用插件吗?', function (sure) {
       sure && enableAllPlugins(e);
     });
   },
@@ -196,12 +196,12 @@ var Home = React.createClass({
             <thead>
               <tr>
                 <th className="w-plugins-order">#</th>
-                <th className="w-plugins-active">Active</th>
-                <th className="w-plugins-date">Date</th>
-                <th className="w-plugins-name">Name</th>
-                <th className="w-plugins-version">Version</th>
-                <th className="w-plugins-operation">Operation</th>
-                <th className="w-plugins-desc">Description</th>
+                <th className="w-plugins-active">激活</th>
+                <th className="w-plugins-date">日期</th>
+                <th className="w-plugins-name">名称</th>
+                <th className="w-plugins-version">版本</th>
+                <th className="w-plugins-operation">操作</th>
+                <th className="w-plugins-desc">描述</th>
               </tr>
             </thead>
           </table>
@@ -302,7 +302,7 @@ var Home = React.createClass({
                           className="w-plugin-btn"
                           onClick={openOutside ? null : self.onOpen}
                         >
-                          Option
+                          选项
                         </a>
                         {plugin.rules || plugin._rules || plugin.resRules ? (
                           <a
@@ -310,7 +310,7 @@ var Home = React.createClass({
                             data-name={name}
                             onClick={self.showRules}
                           >
-                            Rules
+                            规则
                           </a>
                         ) : (
                           <span className="disabled">Rules</span>
@@ -324,7 +324,7 @@ var Home = React.createClass({
                             data-name={name}
                             onClick={self.showUpdate}
                           >
-                            Update
+                            更新
                           </a>
                         )}
                         {plugin.isProj ? (
@@ -336,7 +336,7 @@ var Home = React.createClass({
                             data-name={name}
                             onClick={self.showUninstall}
                           >
-                            Uninstall
+                            卸载
                           </a>
                         )}
                         {util.isString(plugin.rulesUrl) ||
@@ -347,7 +347,7 @@ var Home = React.createClass({
                               self.syncData(plugin);
                             }}
                           >
-                            Sync
+                            同步
                           </a>
                         ) : undefined}
                         {plugin.homepage ? (
@@ -356,10 +356,10 @@ var Home = React.createClass({
                             className="w-plugin-btn"
                             target="_blank"
                           >
-                            Help
+                            帮助
                           </a>
                         ) : (
-                          <span className="disabled">Help</span>
+                          <span className="disabled">帮助</span>
                         )}
                       </td>
                       <td className="w-plugins-desc" title={plugin.description}>
@@ -375,7 +375,7 @@ var Home = React.createClass({
                       href="https://github.com/whistle-plugins"
                       target="_blank"
                     >
-                      Empty
+                      空的
                     </a>
                   </td>
                 </tr>
@@ -419,7 +419,7 @@ var Home = React.createClass({
               className="btn btn-default"
               data-dismiss="modal"
             >
-              Close
+              关闭
             </button>
           </div>
         </Dialog>
@@ -431,9 +431,9 @@ var Home = React.createClass({
                 className="w-copy-text-with-tips"
                 data-clipboard-text={cmdMsg}
               >
-                Copy the following command
+                复制以下命令
               </a>{' '}
-              to the CLI to execute:
+             到终端执行:
             </h5>
             <textarea
               value={cmdMsg}
@@ -448,7 +448,7 @@ var Home = React.createClass({
                 display: !state.isSys && state.uninstall ? '' : 'none'
               }}
             >
-              If uninstall failed, delete the following directory instead:
+              如果卸载失败,请删除以下目录:
               <a
                 className="w-copy-text-with-tips"
                 data-dismiss="modal"
@@ -466,14 +466,14 @@ var Home = React.createClass({
               className="btn btn-primary w-copy-text-with-tips"
               data-clipboard-text={cmdMsg}
             >
-              Copy
+              复制
             </button>
             <button
               type="button"
               className="btn btn-default"
               data-dismiss="modal"
             >
-              Close
+              关闭
             </button>
           </div>
         </Dialog>
@@ -549,9 +549,9 @@ var Tabs = React.createClass({
       >
         {disabled ? (
           <div className="w-record-status" style={{ marginBottom: 5 }}>
-            All plugins is disabled
+            所有插件都被禁用
             <button className="btn btn-primary" onClick={enableAllPlugins}>
-              Enable
+              开启
             </button>
           </div>
         ) : null}
@@ -563,7 +563,7 @@ var Tabs = React.createClass({
             data-name="Home"
             onClick={self.props.onActive}
           >
-            <a draggable="false">Home</a>
+            <a draggable="false">主面板</a>
           </li>
           {tabs.map(function (tab) {
             var disd = !ndp && (disabled || disabledPlugins[tab.name]);

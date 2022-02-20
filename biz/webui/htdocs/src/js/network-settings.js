@@ -181,7 +181,7 @@ var Settings = React.createClass({
                   data-name="excludeFilter"
                   type="checkbox"
                 />
-                Exclude Filter
+                过滤器(禁止)
               </label>
               <a
                 className="w-help-menu"
@@ -197,7 +197,7 @@ var Settings = React.createClass({
               onKeyDown={self.onFilterKeyDown}
               value={state.excludeText}
               data-name="excludeText"
-              placeholder="type filter text"
+              placeholder="输入筛选文本"
               maxLength={dataCenter.MAX_EXCLUDE_LEN}
             />
           </fieldset>
@@ -209,7 +209,7 @@ var Settings = React.createClass({
                   data-name="filter"
                   type="checkbox"
                 />
-                Include Filter
+                过滤器(允许)
               </label>
               <a
                 className="w-help-menu"
@@ -225,15 +225,15 @@ var Settings = React.createClass({
               onKeyDown={self.onFilterKeyDown}
               value={state.filterText}
               data-name="filterText"
-              placeholder="type filter text"
+              placeholder="输入筛选文本"
               maxLength={dataCenter.MAX_INCLUDE_LEN}
             />
           </fieldset>
           <fieldset className="network-settings-columns">
             <legend>
-              <label>Network Columns</label>
+              <label>网络相关</label>
               <label onClick={self.resetColumns} className="btn btn-default">
-                Reset
+                重置
               </label>
             </legend>
             {columnList.map(function (col) {
@@ -282,7 +282,7 @@ var Settings = React.createClass({
           </fieldset>
 
           <label className="w-network-settings-own">
-            Max Rows Number:
+            最大行数:
             <select
               className="form-control"
               onChange={self.onRowsChange}
@@ -296,21 +296,23 @@ var Settings = React.createClass({
               <option value="3000">3000</option>
             </select>
           </label>
+          <br/>
           <label className="w-network-settings-own">
             <input
               checked={dataCenter.isOnlyViewOwnData()}
               data-name="viewOwn"
               type="checkbox"
             />
-            Only view the requests of own computer (IP: {dataCenter.clientIp})
+            仅查看自己计算机的请求 (IP: {dataCenter.clientIp})
           </label>
+          <br/>
           <label className="w-network-settings-own">
             <input checked={isTreeView} data-name="treeView" type="checkbox" />
             <span
               className="glyphicon glyphicon-tree-conifer"
               style={{ marginRight: 2 }}
             ></span>
-            Show Tree View (Ctrl[Command] + B)
+            树型显示 (Ctrl[Command] + B)
           </label>
           {isTreeView ? <br /> : null}
           {isTreeView ? (
@@ -320,7 +322,7 @@ var Settings = React.createClass({
                 data-name="disabledHNR"
                 type="checkbox"
               />
-              Highlight new requests
+              高亮显示新请求
             </label>
           ) : null}
         </div>
@@ -330,7 +332,7 @@ var Settings = React.createClass({
             className="btn btn-default"
             data-dismiss="modal"
           >
-            Close
+            关闭
           </button>
         </div>
         <Dialog ref="editCustomColumn" wstyle="w-network-settings-edit">
@@ -344,14 +346,14 @@ var Settings = React.createClass({
               <span aria-hidden="true">&times;</span>
             </button>
             <label>
-              New {state.name} Name:
+              新 {state.name} 名称:
               <input
                 onChange={this.onNameChange}
                 ref="newColumnName"
                 value={state.value}
                 className="form-control"
                 maxLength="16"
-                placeholder="Input the new column name"
+                placeholder="请输入新的列名"
               />
             </label>
           </div>
@@ -362,14 +364,14 @@ var Settings = React.createClass({
               type="button"
               className="btn btn-primary"
             >
-              Confirm
+              确认
             </button>
             <button
               type="button"
               className="btn btn-default"
               data-dismiss="modal"
             >
-              Cancel
+              取消
             </button>
           </div>
         </Dialog>
