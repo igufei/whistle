@@ -23,7 +23,11 @@ module.exports = {
       {
         test: /\.(png|woff|woff2|eot|ttf|svg)$/,
         loader: 'url-loader?limit=1000000'
-      }
+      }/* , 
+      {
+        test: /\.(eot|svg|ttf|woff|woff2)(\?\S*)?$/,
+        loader: 'file-loader'
+      } */
     ]
   },
   plugins: [
