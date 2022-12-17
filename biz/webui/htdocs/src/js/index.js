@@ -326,6 +326,9 @@ var Index = React.createClass({
     } else if (pageName.indexOf('js') != -1) {
       state.hasJs = true;
       state.name = 'js';
+    } else if (pageName.indexOf('chat') != -1) {
+      state.hasChat = true;
+      state.name = 'chat';
     } else {
       state.hasNetwork = true;
       state.name = 'network';
@@ -903,6 +906,8 @@ var Index = React.createClass({
           self.showJson();
         } else if (pageName.indexOf('js') != -1) {
           self.showJs();
+        } else if (pageName.indexOf('chat') != -1) {
+          self.showChat();
         } else {
           self.showNetwork();
         }
@@ -1632,6 +1637,20 @@ var Index = React.createClass({
       name: 'crypto'
     });
     util.changePageName('crypto');
+  },
+  /* 显示加密 */
+  showChat: function (e) {
+    if (this.state.name != 'chat') {
+      this.setMenuOptionsState();
+      this.hideRulesOptions();
+      this.hidePluginsOptions();
+      this.hideValuesOptions();
+    }
+    this.setState({
+      hasChat: true,
+      name: 'chat'
+    });
+    util.changePageName('chat');
   },
   /* 显示编码 */
   showCodec: function (e) {
@@ -4158,6 +4177,18 @@ var Index = React.createClass({
               <span className="glyphicon glyphicon-text-width"></span>
               <i className="w-left-menu-name">调试</i>
             </a>
+            {/* chat */}
+            <a
+              onClick={this.showChat}
+              className={
+                'w-save-menu w-values-menu' +
+                (name == 'chat' ? ' w-menu-selected' : '')
+              }
+              draggable="false"
+            >
+              <span className="glyphicon glyphicon-book"></span>
+              <i className="w-left-menu-name">问答</i>
+            </a>
           </div>
           {state.hasRules && <List
             ref="rules"
@@ -4209,6 +4240,7 @@ var Index = React.createClass({
           {state.hasCodec && <Container url="./tools/crypto/index.html#codec" hide={name == 'codec' ? false : true} />}
           {state.hasJson && <Container url="./tools/JSONEditor/index.html" hide={name == 'json' ? false : true} />}
           {state.hasJs && <Container url="./tools/jseditor/index.html" hide={name == 'js' ? false : true} />}
+          {state.hasChat && <Container url="./tools/crypto/index.html#chat" hide={name == 'chat' ? false : true} />}
         </div>
 
         <div
